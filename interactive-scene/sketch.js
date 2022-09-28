@@ -6,7 +6,7 @@
 // - describe what you did to take this project "above and beyond"
 
 let spiberMan;
-
+let scalar = 2;
 function preload(){
   spiberMan = loadImage("");
 }
