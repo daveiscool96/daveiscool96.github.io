@@ -5,11 +5,10 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let monke;
-let scalar = 2;
+let spiberMan;
 
 function preload(){
-  monke = loadImage("monke.png");
+  spiberMan = loadImage("");
 }
 
 function setup() {
