@@ -5,26 +5,17 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let spiberMan;
-let scalar = 2;
-function preload(){
-  spiberMan = loadImage("");
-}
+let spiberBG;
 
+function preload() {
+  spiberBG = loadImage("best city background.png");
+}
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  imageMode(CENTER);
+  image(spiberBG, 0, 0, width, height);
+  createCanvas(width, height);
 }
 
 function draw() {
-  //background(220);
-  image(monke, mouseX, mouseY, monke.width*scalar, monke.height*scalar);
+  background(spiberBG);
 }
 
-function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    scalar = scalar * 1.5;
-  } else if (keyCode === DOWN_ARROW) {
-    scalar = scalar * 0.75;
-  }
-}
