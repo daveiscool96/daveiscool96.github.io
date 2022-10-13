@@ -23,7 +23,10 @@ let spiberR6
 
 //idol wall right
 let spiberWallR1
-
+let spiberWallR2
+let spiberWallR3
+let spiberWallR4
+let spiberWallR5
 // wall right
 
 
