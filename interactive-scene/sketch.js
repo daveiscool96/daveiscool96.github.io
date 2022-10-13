@@ -8,7 +8,7 @@
 let spiberBG;
 
 function preload() {
-  spiberBG = loadImage("best city background.png");
+  spiberBG = loadImage("buildingsBackground.png");
 }
 function setup() {
   image(spiberBG, 0, 0, width, height);
