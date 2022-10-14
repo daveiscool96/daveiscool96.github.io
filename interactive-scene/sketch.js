@@ -6,109 +6,84 @@
 // - describe what you did to take this project "above and beyond"
 
 //scalar
-let xcale = 1.4
+let xcale = 1.4;
+
+//position
+let spiberX = 612*xcale/2;
+let spiberY = 900;
+
 //interactive background
 let spiberBG;
 
 //below sprites for character state machine
+let spiberMan;
 
 //idol right
-let spiberIdolR
+let spiberIdolR;
 
 //right
-let spiberR1
-let spiberR2
-let spiberR3
-let spiberR4
-let spiberR5
-let spiberR6
+let spiberR1;
+let spiberR2;
+let spiberR3;
 
-//idol wall right
-let spiberWallIdolR
-
-// wall right
-let spiberWallR1
-let spiberWallR2
-let spiberWallR3
-let spiberWallR4
-let spiberWallR5
-let spiberWallR6
 
 //idol left
-let spiberIdolL
+let spiberIdolL;
 
 //left
-let spiberL1
-let spiberL2
-let spiberL3
-let spiberL4
-let spiberL5
-let spiberL6
+let spiberL1;
+let spiberL2;
+let spiberL3;
 
-//idol wall left
-let spiberWallIdolL
 
-//wall left
-let spiberWallL1
-let spiberWallL2
-let spiberWallL3
-let spiberWallL4
-let spiberWallL5
-let spiberWallL6
+//idol wall 
+let spiberWallIdol;
+
+// wall
+let spiberWall1;
+let spiberWall2;
+
+
+
 
 function preload() {
-  spiberBG = loadImage("buildingsBackground.png");
+  spiberBG = loadImage("");
 
 //idol right
-spiberIdolR = loadImage("tile016.png");
+spiberIdolR = loadImage("");
 
 //right
-spiberR1 = loadImage("tile016.png");
-spiberR2 = loadImage("tile017.png");
-spiberR3 = loadImage("tile018.png");
-spiberR4 = loadImage("tile019.png");
-spiberR5 = loadImage("tile020.png");
-spiberR6 = loadImage("tile021.png");
+spiberR1 = loadImage("");
+spiberR2 = loadImage("");
+spiberR3 = loadImage("");
 
-//idol wall right
-spiberWallIdolR = loadImage("idolWallRight.png");
 
-// wall right
-spiberWallR1 = loadImage("0Right.png");
-spiberWallR2 = loadImage("1Right.png");
-spiberWallR3 = loadImage("2Right.png");
-spiberWallR4 = loadImage("3Right.png");
-spiberWallR5 = loadImage("4Right.png");
-spiberWallR6 = loadImage("5Right.png");
+//idol wall 
+spiberWallIdolR = loadImage("");
+
+// wall
+spiberWallR1 = loadImage("");
+spiberWallR2 = loadImage("");
 
 //idol left
-spiberIdolL = loadImage("tile023.png");
+spiberIdolL = loadImage("");
 
 //left
-spiberL1 = loadImage("tile023.png");
-spiberL2 = loadImage("tile024.png");
-spiberL3 = loadImage("tile025.png");
-spiberL4 = loadImage("tile026.png");
-spiberL5 = loadImage("tile027.png");
-spiberL6 = loadImage("tile028.png");
+spiberL1 = loadImage("");
+spiberL2 = loadImage("");
+spiberL3 = loadImage("");
 
-//idol wall left
-spiberWallIdolL = loadImage("idolWallLeft.png");
 
-//wall left
-spiberWallL1 = loadImage("0.png");
-spiberWallL2 = loadImage("1.png");
-spiberWallL3 = loadImage("2.png");
-spiberWallL4 = loadImage("3.png");
-spiberWallL5 = loadImage("4.png");
-spiberWallL6 = loadImage("5.png");
+
 }
 function setup() {
   image(spiberBG, 612*xcale, 681*xcale);
   createCanvas(612*xcale, 681*xcale);
+
 }
 
 function draw() {
   background(spiberBG);
+  image(spiberIdolR, spiberX, spiberY, 52, 90);
 }
 
