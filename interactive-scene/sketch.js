@@ -59,11 +59,11 @@ spiberR3 = loadImage("");
 
 
 //idol wall 
-spiberWallIdolR = loadImage("");
+spiberWallIdol = loadImage("");
 
 // wall
-spiberWallR1 = loadImage("");
-spiberWallR2 = loadImage("");
+spiberWall1 = loadImage("new climb right.png");
+spiberWall2 = loadImage("new climb left.png");
 
 //idol left
 spiberIdolL = loadImage("");
