@@ -41,8 +41,8 @@ function preload() {
   spiberBG = loadImage("buildingsBackground.png");
 }
 function setup() {
-  image(spiberBG, 612, 681);
-  createCanvas(612, 681);
+  image(spiberBG, 918, 1021.5);
+  createCanvas(918, 1021.5);
 }
 
 function draw() {
