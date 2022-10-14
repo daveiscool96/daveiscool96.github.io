@@ -1,47 +1,46 @@
-// Chessboard
-// David Hutcheson
-// Sept 19, 2022
+// Project Title
+// Your Name
+// Date
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+
+let x = 0;
+let y = 0;
+let sped = 25;
+let dx = sped;
+let dy = 0;
+let SquareSize = 75;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background("white");
-  drawChessboard();
-}
-
-function drawChessboard() {
-  let cellWidth = width/8;
-  let cellHeight = height/8;
-  if (cellWidth > cellHeight) {
-    cellWidth = cellHeight;
+  background(220);
+  fill("black")
+  square(x, y, 75);
+  x += dx;
+  y += dy;
+  //go down at right wall
+  if (x >= width - SquareSize && y <= 0) {
+    dx -= sped;
+    dy += sped;
   }
-  else {
-    cellHeight = cellWidth;
+  //go left ar bottom wall
+  if (x >= width - SquareSize && y >= height - SquareSize) {
+    dx -= sped;
+    dy -= sped;
   }
-
-  let isWhite = true;
-  for (let y = 0; y < 8; y++) {
-    for (let x = 0; x < 8; x++) {
-      if (isWhite) {
-        fill("white");
-      }
-      else {
-        fill("black");
-      }
-      rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-      isWhite = !isWhite;
-    }
-    isWhite = !isWhite;  //flip boolean in between rows
+  //go up at left wall
+  if (x <= 0 && y >= height - SquareSize) {
+    dx += sped;
+    dy -= sped;
+  }
+  //go right at top wall
+  if (x <= 0 && y <= 0) {
+    dx += sped;
+    dy += sped;
   }
 }
-
-function windowResized() {
-  setup();
-}
-
