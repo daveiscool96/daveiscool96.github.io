@@ -5,6 +5,8 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+//scalar
+let xcale = 1.4
 //interactive background
 let spiberBG;
 
@@ -102,8 +104,8 @@ spiberWallL5 = loadImage("4.png");
 spiberWallL6 = loadImage("5.png");
 }
 function setup() {
-  image(spiberBG, 918, 1021.5);
-  createCanvas(918, 1021.5);
+  image(spiberBG, 612*xcale, 681*xcale);
+  createCanvas(612*xcale, 681*xcale);
 }
 
 function draw() {
