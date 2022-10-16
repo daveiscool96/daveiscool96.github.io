@@ -8,19 +8,23 @@
 //scalar
 let xcale = 1.4;
 
+//interactive background
+let spiberBG;
+
+//background size
+let bgX = 612*xcale
+let bgY = 681*xcale
+
 //size
 let spiberWidth = 52;
 let spiberHeight = 90;
 
 //position
-let spiberX = 612*xcale/2;
+let spiberX = bgX/2;
 let spiberY = 780;
 
 //speed
-let spiberSpeed = 5;
-
-//interactive background
-let spiberBG;
+let spiberSpeed = 3;
 
 //below sprites for character state machine
 let spiberMan;
@@ -85,8 +89,8 @@ spiberL4 = loadImage("run4L.png");
 
 }
 function setup() {
-  image(spiberBG, 612*xcale, 681*xcale);
-  createCanvas(612*xcale, 681*xcale);
+  image(spiberBG, bgX, bgY);
+  createCanvas(bgX, bgY);
 
 }
 
@@ -98,15 +102,15 @@ function draw() {
 
 function handleKeys() {
   //stay off edge
-  if (spiberX > 612*xcale - spiberWidth) {
+  if (spiberX > bgX - spiberWidth) {
     spiberX -= 1;
   }
   else if (spiberX < 0) {
     spiberX += 1;
   }
   else {
-//on ground?
-    if (spiberY === 780) {
+    //on ground?
+    //if (spiberY === 780) {
       //start to run
       if (keyIsDown(68)) { //d
         spiberX += spiberSpeed;
@@ -114,20 +118,25 @@ function handleKeys() {
       if (keyIsDown(65)) { //a
         spiberX -= spiberSpeed;
       }
-    }
+    //}
   }
-    
-  
-  //ready to climb?
-  // if (spiberX === 1 && spiberX === 2 || spiberX === 4 && spiberX === 5 || spiberX === 6 && spiberX === 7 || spiberX === 8 && spiberX === 9) {
-  //   //start to climb
-  //   if (keyIsDown(83)) { //s
-  //     spiberY += spiberSpeed;
-  //   }
-  //   if (keyIsDown(87)) { //w
-  //      spiberY -= spiberSpeed;
-  //   }
-  // }
- 
-  
+  //where can climb?
+  if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth ) {
+    //temporary height range
+    if (spiberY > 780) {
+      spiberY -= 1;
+    }
+    else if (spiberY < 300) {
+      spiberY += 1;
+    }
+     else {
+    //start to climb
+       if (keyIsDown(83)) {//s
+        spiberY += spiberSpeed;
+       }
+       if (keyIsDown(87)) {//w
+         spiberY -= spiberSpeed;
+      } 
+     }
+    }
 }
