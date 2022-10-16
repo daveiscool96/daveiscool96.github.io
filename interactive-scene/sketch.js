@@ -10,7 +10,7 @@ let xcale = 1.4;
 
 //position
 let spiberX = 612*xcale/2;
-let spiberY = 900;
+let spiberY = 780;
 
 //interactive background
 let spiberBG;
@@ -47,32 +47,33 @@ let spiberWall2;
 
 
 function preload() {
-  spiberBG = loadImage("");
+  spiberBG = loadImage("Buildings.png");
 
 //idol right
-spiberIdolR = loadImage("");
+spiberIdolR = loadImage("idolR.png");
 
 //right
-spiberR1 = loadImage("");
-spiberR2 = loadImage("");
-spiberR3 = loadImage("");
+spiberR1 = loadImage("run1.png");
+spiberR2 = loadImage("run2.png");
+spiberR3 = loadImage("run3.png");
+spiberR4 = loadImage("run4.png");
 
 
 //idol wall 
-spiberWallIdol = loadImage("");
+spiberWallIdol = loadImage("new climb idol.png");
 
 // wall
 spiberWall1 = loadImage("new climb right.png");
 spiberWall2 = loadImage("new climb left.png");
 
 //idol left
-spiberIdolL = loadImage("");
+spiberIdolL = loadImage("idolL.png");
 
 //left
-spiberL1 = loadImage("");
-spiberL2 = loadImage("");
-spiberL3 = loadImage("");
-
+spiberL1 = loadImage("run1L.png");
+spiberL2 = loadImage("run2L.png");
+spiberL3 = loadImage("run3L.png");
+spiberL4 = loadImage("run4L.png");
 
 
 }
