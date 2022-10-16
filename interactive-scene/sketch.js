@@ -8,9 +8,16 @@
 //scalar
 let xcale = 1.4;
 
+//size
+let spiberWidth = 52;
+let spiberHeight = 90;
+
 //position
 let spiberX = 612*xcale/2;
 let spiberY = 780;
+
+//speed
+let spiberSpeed = 5;
 
 //interactive background
 let spiberBG;
@@ -85,6 +92,42 @@ function setup() {
 
 function draw() {
   background(spiberBG);
-  image(spiberIdolR, spiberX, spiberY, 52, 90);
+  image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
+  handleKeys();
 }
 
+function handleKeys() {
+  //stay off edge
+  if (spiberX > 612*xcale - spiberWidth) {
+    spiberX -= 1;
+  }
+  else if (spiberX < 0) {
+    spiberX += 1;
+  }
+  else {
+//on ground?
+    if (spiberY === 780) {
+      //start to run
+      if (keyIsDown(68)) { //d
+        spiberX += spiberSpeed;
+      }
+      if (keyIsDown(65)) { //a
+        spiberX -= spiberSpeed;
+      }
+    }
+  }
+    
+  
+  //ready to climb?
+  // if (spiberX === 1 && spiberX === 2 || spiberX === 4 && spiberX === 5 || spiberX === 6 && spiberX === 7 || spiberX === 8 && spiberX === 9) {
+  //   //start to climb
+  //   if (keyIsDown(83)) { //s
+  //     spiberY += spiberSpeed;
+  //   }
+  //   if (keyIsDown(87)) { //w
+  //      spiberY -= spiberSpeed;
+  //   }
+  // }
+ 
+  
+}
