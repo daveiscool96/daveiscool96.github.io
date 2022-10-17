@@ -327,17 +327,23 @@ function handleKeys() {
 
   //Y
   if (spiberY > 780) {
-    spiberY -= 1;
+    spiberY -= spiberSpeed;
   }
   else if(spiberY > 780 && lookingRight || spiberY > 780 && lookingLeft) {
     spiberY -= spiberSpeed * spiberSpeed;
   }
    
   else {
-    if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth) {
+    if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth && spiberY < 340 || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth && spiberY < 340 || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth && spiberY < 340 || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth && spiberY < 340) {
+      spiberY += spiberSpeed
+    }
+    else if(spiberY < 340 && lookingRight || spiberY < 340 && lookingLeft) {
+      spiberY -= spiberSpeed * spiberSpeed;
+    }
+    else{
       if (keyIsDown(83)) {//s
         spiberY += spiberSpeed;
-       climb = true;
+        climb = true;
       }
       else if (keyIsDown(87)) {//w
         spiberY -= spiberSpeed;
@@ -346,80 +352,17 @@ function handleKeys() {
       else {
         climb = false;
        }
-      }
     }
-    
-  }
-  // //building 1
-  // if(spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth) {
-  //   if (spiberY < 300) {
-  //     spiberY += spiberSpeed;
-  //   }
-  //   else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
-  //     spiberY += spiberSpeed * spiberSpeed;
-  //   }
-  //   else {
-      
-  // }
-  // //building 2
-  // if(spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth) {
-  //   if (spiberY < 450) {
-  //     spiberY += spiberSpeed;
-  //   }
-  //   else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
-  //     spiberY += spiberSpeed * spiberSpeed;
-  //   }
-  //   else {
-      
-  //   }
-  // }
-  // //building 3
-  // if(spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth) {
-  //   if (spiberY < 300) {
-  //     spiberY += spiberSpeed;
-  //   }
-  //   else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
-  //     spiberY += spiberSpeed * spiberSpeed;
-  //   }
-  //   else {
-      
-  //   }
-  // }
-  // //building 4
-  // if(spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth) {
-  //   if (spiberY < 350) {
-  //     spiberY += spiberSpeed;
-  //   }
-  //   else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
-  //     spiberY += spiberSpeed * spiberSpeed;
-  //   }
-  //   else {
-      
-  //   }
-  // }
-
-
-   
- 
-    
-   
-
-   
-    //  //horizontal range
-    // if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
-    //   spiberX += spiberSpeed;
-    // }
-    // else if (spiberX > bgX/48*47 - spiberWidth && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberY < 760 ||  spiberX > bgX/48*21 - spiberWidth && spiberY < 760 || spiberX > bgX/48*11 - spiberWidth && spiberY < 760 ) {
-    //   spiberX -= spiberSpeed;
-    // }
-    // else {
-      
-    // }   
-  
         
-    
-              
-         
+  }       
         
-        
-   
+}
+//    if (spiberY < 300) {
+      //      spiberY += spiberSpeed;
+      //    }
+      //   }
+     
+      //  else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
+      //    spiberY -= spiberSpeed * spiberSpeed;
+      //  }
+      //  else {
