@@ -357,12 +357,3 @@ function handleKeys() {
   }       
         
 }
-//    if (spiberY < 300) {
-      //      spiberY += spiberSpeed;
-      //    }
-      //   }
-     
-      //  else if(spiberY < 300 && lookingRight || spiberY < 300 && lookingLeft) {
-      //    spiberY -= spiberSpeed * spiberSpeed;
-      //  }
-      //  else {
