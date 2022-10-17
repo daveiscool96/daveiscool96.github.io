@@ -156,7 +156,7 @@ function spiberSprites() {
     }
   }
   //running left
-  else if(lookingLeft == true && spiberY > 760) {
+  if(lookingLeft == true && spiberY > 760) {
     lookingRight = false;
     step = step+1;
     if (step == 0) {
@@ -198,7 +198,7 @@ function spiberSprites() {
     }
   }
   // climbing 
-  else if(spiberY < 780 && climb == true ||spiberY < 790 && lookingRight || spiberY < 770 && lookingLeft) {
+  if(spiberY < 760 && climb == true ||spiberY < 760 && lookingRight || spiberY < 760 && lookingLeft) {
     step = step+1;
     if (step == 0) {
       image(spiberWall1, spiberX, spiberY, spiberWidth, spiberHeight);
@@ -279,7 +279,7 @@ function spiberSprites() {
     image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
     
   }
-  else if(lookingRight == false && lookingLeft == false && spiberY < 775 && climb == false) {
+  else if(lookingRight == false && lookingLeft == false && spiberY < 760 && climb == false) {
     image(spiberWallIdol, spiberX, spiberY, spiberWidth, spiberHeight);
   }
 
