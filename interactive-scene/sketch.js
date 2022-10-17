@@ -12,8 +12,13 @@ let xcale = 1.4;
 let spiberBG;
 
 //background size
-let bgX = 612*xcale
-let bgY = 681*xcale
+let bgX = 612*xcale;
+let bgY = 681*xcale;
+
+//sprite changer
+let step = 0;
+let lookingRight = true;
+let lookingLeft = false;
 
 //size
 let spiberWidth = 52;
@@ -36,7 +41,7 @@ let spiberIdolR;
 let spiberR1;
 let spiberR2;
 let spiberR3;
-
+let spiberR4;
 
 //idol left
 let spiberIdolL;
@@ -45,7 +50,7 @@ let spiberIdolL;
 let spiberL1;
 let spiberL2;
 let spiberL3;
-
+let spiberL4;
 
 //idol wall 
 let spiberWallIdol;
@@ -96,8 +101,99 @@ function setup() {
 
 function draw() {
   background(spiberBG);
-  image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
+  spiberSprites();
   handleKeys();
+}
+
+function spiberSprites() {
+  //image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
+  if(lookingRight == true && spiberY == 780) {
+    lookingLeft = false;
+    step = step+1;
+    if (step == 0) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 1) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 2) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 3) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 4) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 5) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 6) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 7) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 8) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 9) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 10) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 11) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+      step = 0;
+    }
+  }
+
+  if(lookingLeft == true && spiberY == 780) {
+    lookingRight = false;
+    step = step+1;
+    if (step == 0) {
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 1) {
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 2) {
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 3) {
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 4) {
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 5) {
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 6) {
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 7) {
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 8) {
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 9) {
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 10) {
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 11) {
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+      step = 0;
+    }
+  }
+
+  if (lookingRight == false && lookingLeft == false && spiberY == 780) {
+    image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
+  }
 }
 
 function handleKeys() {
@@ -114,9 +210,17 @@ function handleKeys() {
       //start to run
       if (keyIsDown(68)) { //d
         spiberX += spiberSpeed;
+        lookingRight = true;
+      }
+      else {
+        lookingRight = false;
       }
       if (keyIsDown(65)) { //a
         spiberX -= spiberSpeed;
+        lookingLeft = true;
+      }
+      else {
+        lookingLeft = false;
       }
     //}
   }
@@ -126,17 +230,17 @@ function handleKeys() {
     if (spiberY > 780) {
       spiberY -= 1;
     }
-    else if (spiberY < 300) {
-      spiberY += 1;
-    }
-     else {
+    else {
     //start to climb
-       if (keyIsDown(83)) {//s
-        spiberY += spiberSpeed;
-       }
-       if (keyIsDown(87)) {//w
-         spiberY -= spiberSpeed;
+      if (keyIsDown(83)) {//s
+       spiberY += spiberSpeed;
+      }
+      if (keyIsDown(87)) {//w
+       spiberY -= spiberSpeed;
       } 
      }
     }
 }
+// else if (spiberY < 300) {
+//   spiberY += 1;
+// }
