@@ -103,7 +103,6 @@ spiberL4 = loadImage("run4L.png");
 function setup() {
   image(spiberBG, bgX, bgY);
   createCanvas(bgX, bgY);
-
 }
 
 function draw() {
@@ -277,7 +276,6 @@ function spiberSprites() {
   //idol
   if (lookingRight == false && lookingLeft == false && spiberY > 760) {
     image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
-    
   }
   else if(lookingRight == false && lookingLeft == false && spiberY < 785 && climb == false) {
     image(spiberWallIdol, spiberX, spiberY, spiberWidth, spiberHeight);
