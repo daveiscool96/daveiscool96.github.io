@@ -156,7 +156,7 @@ function spiberSprites() {
     }
   }
   //running left
-  if(lookingLeft == true && spiberY > 760) {
+  else if(lookingLeft == true && spiberY > 760) {
     lookingRight = false;
     step = step+1;
     if (step == 0) {
@@ -198,7 +198,7 @@ function spiberSprites() {
     }
   }
   // climbing 
-  if(spiberY < 770 && climb == true ||spiberY < 770 && lookingRight||spiberY < 770 && lookingLeft) {
+  else if(spiberY < 780 && climb == true ||spiberY < 790 && lookingRight || spiberY < 770 && lookingLeft) {
     step = step+1;
     if (step == 0) {
       image(spiberWall1, spiberX, spiberY, spiberWidth, spiberHeight);
@@ -275,11 +275,11 @@ function spiberSprites() {
     }
   }
   //idol
-  if (lookingRight == false && lookingLeft == false && spiberY > 760) {
+  if (lookingRight == false && lookingLeft == false && climb == false && spiberY > 760) {
     image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
     
   }
-  else if(lookingRight == false && lookingLeft == false && spiberY < 785 && climb == false) {
+  else if(lookingRight == false && lookingLeft == false && spiberY < 775 && climb == false) {
     image(spiberWallIdol, spiberX, spiberY, spiberWidth, spiberHeight);
   }
 
@@ -312,29 +312,62 @@ function handleKeys() {
       }
     //}
   }
-  //where can climb?
-  if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth ) {
-    //temporary height range
-    if (spiberY > 780) {
-      spiberY -= 1;
-    }
-    else {
-    //start to climb
-      if (keyIsDown(83)) {//s
-       spiberY += spiberSpeed;
-       climb = true;
-      }
-      
-      else if (keyIsDown(87)) {//w
-       spiberY -= spiberSpeed;
-       climb = true;
-      } 
-      else {
-        climb = false;
-      }
-     }
-    }
+//where can climb?
+
+//  vertical range
+if (spiberY > 780) {
+  spiberY -= 1;
 }
-// else if (spiberY < 300) {
-//   spiberY += 1;
-// }
+else if(spiberY > 780 && lookingRight || spiberY > 780 && lookingLeft) {
+  spiberY -= spiberSpeed * spiberSpeed;
+}
+
+else {
+  if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth) {
+    if (keyIsDown(83)) {//s
+      spiberY += spiberSpeed;
+      climb = true;
+    }
+    else if (keyIsDown(87)) {//w
+      spiberY -= spiberSpeed;
+      climb = true;
+    } 
+    else {
+     climb = false;
+    }
+  }
+}
+    
+    // //horizontal range
+    // if (spiberX < bgX/48*2 && spiberY < 760 || spiberX < bgX/48*14 && spiberY < 760 || spiberX < bgX/48*25 && spiberY < 760 || spiberX < bgX/48*36 && spiberY < 760 ) {
+    //   spiberX += 1;
+    // }
+    // else if (spiberX > bgX/48*47 - spiberWidth && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberY < 760 ||  spiberX > bgX/48*21 - spiberWidth && spiberY < 760 || spiberX > bgX/48*11 - spiberWidth && spiberY < 760 ) {
+    //   spiberX -= 1;
+    // }
+    
+      
+      //  }
+        // // else if () {
+          // // if() {
+  
+          // // }
+          // // if() {
+  
+          // // }
+          // // if() {
+  
+          // // }
+          // // if() {
+  
+          // // }
+        // // }
+        // // else {
+      // //  start to climb
+        
+       
+      // //  }
+    
+  
+}
+
