@@ -23,8 +23,8 @@ let lookingLeft = false;
 let climbing = false;
 
 //size
-let spiberWidth = 44;
-let spiberHeight = 106;
+let spiberWidth = 52;
+let spiberHeight = 90;
 
 //position
 let spiberX = bgX/2;
@@ -123,119 +123,65 @@ function spiberSprites() {
   if(lookingRight == true && spiberY > 760) {
     lookingLeft = false;
     step = step+1;
-    if (step == 0) {
-      image(spiberR1, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 1) {
-      image(spiberR1, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 2) {
-      image(spiberR1, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 3) {
-      image(spiberR2, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 4) {
-      image(spiberR2, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 5) {
-      image(spiberR2, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 6) {
-      image(spiberR3, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 7) {
-      image(spiberR3, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 8) {
-      image(spiberR3, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 9) {
-      image(spiberR4, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 10) {
-      image(spiberR4, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 11) {
-      image(spiberR4, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 12) {
-      image(spiberR5, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 13) {
-      image(spiberR5, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 14) {
-      image(spiberR5, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 15) {
-      image(spiberR6, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 16) {
-      image(spiberR6, spiberX, spiberY, 49, 65);
-    }
-    else if (step == 17) {
-      image(spiberR6, spiberX, spiberY, 49, 65);
-      step = 0;
-    }
+    
   }
   //running left
   if(lookingLeft == true && spiberY > 760) {
     lookingRight = false;
     step = step+1;
     if (step == 0) {
-      image(spiberL1, spiberX, spiberY, 49, 65);
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 1) {
-      image(spiberL1, spiberX, spiberY, 49, 65);
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 2) {
-      image(spiberL1, spiberX, spiberY, 49, 65);
+      image(spiberL1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 3) {
-      image(spiberL2, spiberX, spiberY, 49, 65);
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 4) {
-      image(spiberL2, spiberX, spiberY, 49, 65);
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 5) {
-      image(spiberL2, spiberX, spiberY, 49, 65);
+      image(spiberL2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 6) {
-      image(spiberL3, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 7) {
-      image(spiberL3, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 8) {
-      image(spiberL3, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 9) {
-      image(spiberL4, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 10) {
-      image(spiberL4, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 11) {
-      image(spiberL4, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 12) {
-      image(spiberL5, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 13) {
-      image(spiberL5, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 14) {
-      image(spiberL5, spiberX, spiberY, 49, 65);
+      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 15) {
-      image(spiberL6, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 16) {
-      image(spiberL6, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 17) {
-      image(spiberL6, spiberX, spiberY, 49, 65);
+      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
       step = 0;
     }
 
@@ -244,76 +190,76 @@ function spiberSprites() {
   if(spiberY < 760 && climb == true ||spiberY < 760 && lookingRight||spiberY < 760 && lookingLeft) {
     wallStep = wallStep+1;
     if (wallStep == 0) {
-      image(spiberWall1, spiberX, spiberY, 44, 106);
+      image(spiberWall1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 1) {
-      image(spiberWall1, spiberX, spiberY, 44, 106);
+      image(spiberWall1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 2) {
-      image(spiberWall1, spiberX, spiberY, 44, 106);
+      image(spiberWall1, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 3) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 4) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 5) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 6) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 7) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 8) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 9) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 10) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 11) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 12) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 13) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 14) {
-      image(spiberWall4, spiberX, spiberY, 44, 106);
+      image(spiberWall4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 15) {
-      image(spiberWall5, spiberX, spiberY, 44, 106);
+      image(spiberWall5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 16) {
-      image(spiberWall5, spiberX, spiberY, 44, 106);
+      image(spiberWall5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 17) {
-      image(spiberWall5, spiberX, spiberY, 44, 106);
+      image(spiberWall5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 18) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 19) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 20) {
-      image(spiberWall3, spiberX, spiberY, 44, 106);
+      image(spiberWall3, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 21) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 22) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (wallStep == 23) {
-      image(spiberWall2, spiberX, spiberY, 44, 106);
+      image(spiberWall2, spiberX, spiberY, spiberWidth, spiberHeight);
       wallStep = 0;
     }
   }
@@ -322,7 +268,7 @@ function spiberSprites() {
     image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
   }
   else if(lookingRight == false && lookingLeft == false && spiberY < 760 && climb == false) {
-    image(spiberWallIdol, spiberX, spiberY, 44, 106);
+    image(spiberWallIdol, spiberX, spiberY, spiberWidth, spiberHeight);
   }
 
 
