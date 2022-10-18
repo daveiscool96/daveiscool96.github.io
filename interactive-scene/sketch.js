@@ -123,7 +123,61 @@ function spiberSprites() {
   if(lookingRight == true && spiberY > 760) {
     lookingLeft = false;
     step = step+1;
-    
+    if (step == 0) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 1) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 2) {
+      image(spiberR1, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 3) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 4) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 5) {
+      image(spiberR2, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 6) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 7) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 8) {
+      image(spiberR3, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 9) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 10) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 11) {
+      image(spiberR4, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 12) {
+      image(spiberR5, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 13) {
+      image(spiberR5, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 14) {
+      image(spiberR5, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 15) {
+      image(spiberR6, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 16) {
+      image(spiberR6, spiberX, spiberY, spiberWidth, spiberHeight);
+    }
+    else if (step == 17) {
+      image(spiberR6, spiberX, spiberY, spiberWidth, spiberHeight);
+      step = 0;
+    }
   }
   //running left
   if(lookingLeft == true && spiberY > 760) {
@@ -166,22 +220,22 @@ function spiberSprites() {
       image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 12) {
-      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 13) {
-      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 14) {
-      image(spiberL3, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL5, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 15) {
-      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL6, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 16) {
-      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL6, spiberX, spiberY, spiberWidth, spiberHeight);
     }
     else if (step == 17) {
-      image(spiberL4, spiberX, spiberY, spiberWidth, spiberHeight);
+      image(spiberL6, spiberX, spiberY, spiberWidth, spiberHeight);
       step = 0;
     }
 
@@ -278,7 +332,7 @@ function spiberSprites() {
 
 function handleKeys() {
   //stay off edge
-  if (spiberX > bgX - spiberWidth) {
+  if (spiberX > bgX - bgX/48 - spiberWidth) {
     spiberX -= spiberSpeed;
   }
   else if (spiberX < 0) {
@@ -323,24 +377,28 @@ function handleKeys() {
   }
    
   else {
-    if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth && spiberY < 340 || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth && spiberY < 340 || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth && spiberY < 340 || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth && spiberY < 340) {
+
+    if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth && spiberY < 350 || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth && spiberY < 350 || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth && spiberY < 350 || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth && spiberY < 350) {
       spiberY += spiberSpeed
     }
-    else if(spiberY < 340 && lookingRight || spiberY < 340 && lookingLeft) {
+    else if(spiberY < 350 && lookingRight || spiberY < 350 && lookingLeft) {
       spiberY -= spiberSpeed * spiberSpeed;
     }
     else{
-      if (keyIsDown(83)) {//s
-        spiberY += spiberSpeed;
-        climb = true;
+      if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*47 - spiberWidth) {
+        if (keyIsDown(83)) {//s
+          spiberY += spiberSpeed;
+          climb = true;
+        }
+        else if (keyIsDown(87)) {//w
+          spiberY -= spiberSpeed;
+          climb = true;
+         }
+        else {
+          climb = false;
+         }
       }
-      else if (keyIsDown(87)) {//w
-        spiberY -= spiberSpeed;
-        climb = true;
-       }
-      else {
-        climb = false;
-       }
+      
     }
         
   }       
