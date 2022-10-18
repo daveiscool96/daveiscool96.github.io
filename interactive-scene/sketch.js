@@ -318,7 +318,7 @@ function spiberSprites() {
     }
   }
   //idol
-  if (lookingRight == false && lookingLeft == false && spiberY > 760) {
+  if (lookingRight == false && lookingLeft == false && climb == false && spiberY > 760) {
     image(spiberIdolR, spiberX, spiberY, spiberWidth, spiberHeight);
   }
   else if(lookingRight == false && lookingLeft == false && spiberY < 760 && climb == false) {
@@ -365,7 +365,6 @@ function handleKeys() {
     }
   }
   
-  
 
 
   //Y
@@ -404,3 +403,5 @@ function handleKeys() {
   }       
         
 }
+
+
