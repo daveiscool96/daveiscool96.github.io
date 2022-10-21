@@ -373,7 +373,7 @@ function handleKeys() {
     spiberY -= spiberSpeed;
   }
   else if(spiberY > 780 && lookingRight || spiberY > 780 && lookingLeft) {
-    spiberY -= spiberSpeed * spiberSpeed;
+    spiberY += spiberSpeed * spiberSpeed;
   }
    
   else {
