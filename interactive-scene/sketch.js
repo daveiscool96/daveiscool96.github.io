@@ -116,6 +116,7 @@ function draw() {
   background(spiberBG);
   spiberSprites();
   handleKeys();
+  mousePressed();
 }
 
 function spiberSprites() {
@@ -364,6 +365,7 @@ function handleKeys() {
         }
       }
   }
+  
   
   
 
