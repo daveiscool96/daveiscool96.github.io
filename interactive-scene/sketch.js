@@ -21,6 +21,7 @@ let wallStep = 0;
 let lookingRight = true;
 let lookingLeft = false;
 let climbing = false;
+let swing = false;
 
 //size
 let spiberWidth = 52;
@@ -116,7 +117,6 @@ function draw() {
   background(spiberBG);
   spiberSprites();
   handleKeys();
-  mousePressed();
 }
 
 function spiberSprites() {
@@ -354,16 +354,31 @@ function handleKeys() {
       else {
         lookingLeft = false;
       }
-      if (lookingRight == true) {
-        if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
-          spiberX -= spiberSpeed;
+      if (mouseIsPressed == true){
+        if (lookingRight == true) {
+          if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
+            spiberX += spiberSpeed;
+          }
+        }
+        else if (lookingLeft == true) {
+          if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
+            spiberX -= spiberSpeed;
+          }
         }
       }
-      else if (lookingLeft == true) {
-        if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
-          spiberX += spiberSpeed;
+      else {
+        if (lookingRight == true) {
+          if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
+            spiberX -= spiberSpeed;
+          }
+        }
+        else if (lookingLeft == true) {
+          if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
+            spiberX += spiberSpeed;
+          }
         }
       }
+      
   }
   
   
