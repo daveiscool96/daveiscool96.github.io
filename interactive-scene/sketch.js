@@ -7,6 +7,7 @@
 
 //scalar
 let xcale = 1.4;
+let time;
 
 //interactive background
 let spiberBG;
@@ -111,12 +112,26 @@ spiberL6 = loadImage("newrunL6.png");
 function setup() {
   image(spiberBG, bgX, bgY);
   createCanvas(bgX, bgY);
+  time = 0;
 }
 
 function draw() {
   background(spiberBG);
   spiberSprites();
   handleKeys();
+}
+
+
+
+function mousePressed() {
+  if (spiberX > bgX/48*2 && spiberX < bgX/48*11 - spiberWidth || spiberX > bgX/48*14 && spiberX < bgX/48*21 - spiberWidth || spiberX > bgX/48*25 && spiberX < bgX/48*33 - spiberWidth || spiberX > bgX/48*36 && spiberX < bgX/48*46 - spiberWidth){
+    if (swing == false) {
+      swing = true;
+    } 
+    else {
+      swing = false;
+    }
+  }
 }
 
 function spiberSprites() {
@@ -354,7 +369,7 @@ function handleKeys() {
       else {
         lookingLeft = false;
       }
-      if (mouseIsPressed == true){
+      if (swing == true){
         if (lookingRight == true) {
           if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
             spiberX += spiberSpeed;
