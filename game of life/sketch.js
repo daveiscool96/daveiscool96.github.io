@@ -3,12 +3,17 @@
 // Schellenberg
 // Oct 26, 2022
 
-let ROWS = 100;
-let COLS = 100;
+const ROWS = 100;
+const COLS = 100;
 let grid;
 let cellWidth;
 let cellHeight;
+let autoPlay = false;
+let hi
 
+function preload() {
+  hi = loadJSON("hi.json")
+}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/COLS;
@@ -19,6 +24,9 @@ function setup() {
 function draw() {
   background(220);
   displayGrid(grid);
+  if (autoPlay && frameCount % 3 === 0) {
+    grid = takeTurn(grid);
+  }
 }
 function keyPressed() {
   if (key === "e") {
@@ -26,6 +34,12 @@ function keyPressed() {
   }
   if (key === " ") {
     grid = takeTurn(grid);
+  }
+  if (key === "a") {
+    autoPlay = !autoPlay;
+  }
+  if (key === "g") {
+    grid = hi;
   }
 }
 function takeTurn(grid) {
