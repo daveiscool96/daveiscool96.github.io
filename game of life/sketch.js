@@ -4,7 +4,7 @@
 // Oct 26, 2022
 
 let scaleSize = 0;
-const ROWS = 100;
+const ROWS = 50.8;
 const COLS = 100;
 let grid;
 let cellWidth;
