@@ -3,17 +3,19 @@
 // Schellenberg
 // Oct 26, 2022
 
+let scaleSize = 0;
 const ROWS = 100;
 const COLS = 100;
 let grid;
 let cellWidth;
 let cellHeight;
 let autoPlay = false;
-let hi
+let hi;
 
 function preload() {
-  hi = loadJSON("hi.json")
+  hi = loadJSON("hi.json");
 }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/COLS;
