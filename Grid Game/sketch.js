@@ -13,9 +13,12 @@ let cellWidth;
 let cellHeight;
 let autoPlay = false;
 let hi;
+let brick;
+let spike;
 
 function preload() {
-  hi = loadJSON("hi.json");
+  brick = loadImage("brickleRick.png");
+  spike = loadImage("spikeball.webp");
 }
 
 function setup() {
@@ -41,9 +44,6 @@ function keyPressed() {
   }
   if (key === "a") {
     autoPlay = !autoPlay;
-  }
-  if (key === "g") {
-    grid = hi;
   }
 }
 function takeTurn(grid) {
@@ -108,9 +108,9 @@ function displayGrid(grid) {
         fill("white");
       }
       else if (grid[y][x] === 1) {
-        fill("black");
+        image(brick, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
-      rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+      
     }
   }
 }
