@@ -6,8 +6,8 @@
 // - describe what you did to take this project "above and beyond"
 
 let scaleSize = 0;
-const ROWS = 50.8;
-const COLS = 100;
+const ROWS = 12.7;
+const COLS = 25;
 let grid;
 let cellWidth;
 let cellHeight;
@@ -15,10 +15,12 @@ let autoPlay = false;
 let hi;
 let brick;
 let spike;
+let marioBg;
 
 function preload() {
   brick = loadImage("brickleRick.png");
   spike = loadImage("spikeball.webp");
+  marioBg = loadImage("mariobackground.jpg");
 }
 
 function setup() {
@@ -29,7 +31,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(marioBg);
   displayGrid(grid);
   if (autoPlay && frameCount % 3 === 0) {
     grid = takeTurn(grid);
