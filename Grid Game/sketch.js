@@ -6,7 +6,7 @@
 // - describe what you did to take this project "above and beyond"
 
 let scaleSize = 0;
-const ROWS = 12;
+const ROWS = 11;
 const COLS = 25;
 let grid;
 let cellWidth;
