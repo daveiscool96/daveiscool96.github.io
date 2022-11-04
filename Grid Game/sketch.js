@@ -6,7 +6,7 @@
 // - describe what you did to take this project "above and beyond"
 
 let scaleSize = 0;
-const ROWS = 12.7;
+const ROWS = 12;
 const COLS = 25;
 let grid;
 let cellWidth;
@@ -16,17 +16,19 @@ let hi;
 let brick;
 let spike;
 let marioBg;
+let door;
 
 function preload() {
   brick = loadImage("brickleRick.png");
   spike = loadImage("spikeball.webp");
   marioBg = loadImage("mariobackground.jpg");
+  door = loadImage("marioDoor.png");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  cellWidth = width/COLS;
-  cellHeight = height/ROWS;
+  cellWidth = 62;
+  cellHeight = 62;
   grid = createRandom2dArray(COLS, ROWS);
 }
 
@@ -89,10 +91,6 @@ function takeTurn(grid) {
   return nextTurn;
 }
 function mousePressed() {
-  console.log(mouseX, mouseY);
-  let cellWidth = width / grid[0].length;
-  let cellHeight = height / grid.length;
-
   let x = Math.floor(mouseX/cellWidth);
   let y = Math.floor(mouseY/cellHeight);
 
@@ -103,6 +101,7 @@ function mousePressed() {
     grid[y][x] = 0;
   }
 }
+
 function displayGrid(grid) {
   for (let y=0; y<ROWS; y++) {
     for (let x=0; x<COLS; x++) {
