@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
   background(220);
-  fill("black")
+  fill("black");
   square(x, y, 75);
   x += dx;
   y += dy;
