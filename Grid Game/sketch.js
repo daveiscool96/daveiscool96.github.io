@@ -1,27 +1,26 @@
-// Mario Maker
+// Shell Smash
 // David Hutcheson
 // 
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// 
 
 const ROWS = 40;
 const COLS = 40;
 let grid;
 let cellWidth;
 let cellHeight;
-let playerX = 0;
-let playerY = 0;
+let shellX = 0;
+let shellY = 0;
 let wall;
-let empty;
+let questionBlock;
 let blueShell;
-let trail;
 let cnv;
 
 function preload() {
   wall = loadImage("brickleRick.png");
-  empty = loadImage("whiteSquare.png");
-  blueShell = loadImage("blueShell.webp");
+  questionBlock = loadImage("whiteSquare.png");
+  blueShell = loadImage("tile000.png");
 }
 
 function setup() {
@@ -32,67 +31,67 @@ function setup() {
   cellHeight = width/ROWS;
   grid = createRandom2dArray(COLS, ROWS);
   //place player in grid
-  grid[playerY][playerX] = 9;
+  grid[shellY][shellX] = 9;
 }
 function centerCanvas() {
   
 }
 
 function draw() {
-  background("black");
+  background("blue");
   displayGrid(grid);
 }
 
 function keyPressed() {
   if (keyCode === RIGHT_ARROW) {
-    if (grid[playerY][playerX+1] === 0) {
+    if (grid[shellY][shellX+1] === 0) {
       //reset old location to white
-      grid[playerY][playerX] = 0;
+      grid[shellY][shellX] = 0;
       
       //move
-      playerX++;
+      shellX++;
 
       //set new player location
-      grid[playerY][playerX] = 9;
+      grid[shellY][shellX] = 9;
     }
   }
 
   if (keyCode === LEFT_ARROW) {
-    if (grid[playerY][playerX-1] === 0) {
+    if (grid[shellY][shellX-1] === 0) {
       //reset old location to white
-      grid[playerY][playerX] = 0;
+      grid[shellY][shellX] = 0;
       
       //move
-      playerX--;
+      shellX--;
 
       //set new player location
-      grid[playerY][playerX] = 9;
+      grid[shellY][shellX] = 9;
     }
   }
 
   if (keyCode === UP_ARROW) {
-    if (grid[playerY-1][playerX] === 0) {
+    if (grid[shellY-1][shellX] === 0) {
       //reset old location to white
-      grid[playerY][playerX] = 0;
+      grid[shellY][shellX] = 0;
       
       //move
-      playerY--;
+      shellY--;
 
       //set new player location
-      grid[playerY][playerX] = 9;
+      grid[shellY][shellX] = 9;
     }
   }
 
   if (keyCode === DOWN_ARROW) {
-    if (grid[playerY+1][playerX] === 0) {
+    if (grid[shellY+1][shellX] === 0) {
       //reset old location to white
-      grid[playerY][playerX] = 0;
+      grid[shellY][shellX] = 0;
       
       //move
-      playerY++;
+      shellY++;
 
       //set new player location
-      grid[playerY][playerX] = 9;
+      grid[shellY][shellX] = 9;
     }
   }
 }
@@ -114,7 +113,7 @@ function displayGrid(grid) {
     for (let x=0; x<COLS; x++) {
       if (grid[y][x] === 0) {
         // 
-        image(empty, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       else if (grid[y][x] === 1) {
         // fill("black");
@@ -123,7 +122,7 @@ function displayGrid(grid) {
       else if (grid[y][x] === 9) {
         // fill("red");
         // rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        image(empty, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
         image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
     }
@@ -131,28 +130,28 @@ function displayGrid(grid) {
 }
 
 function create2dArray(COLS, ROWS) {
-  let emptyArray = [];
+  let questionBlockArray = [];
   for (let y=0; y<ROWS; y++) {
-    emptyArray.push([]);
+    questionBlockArray.push([]);
     for (let x=0; x<COLS; x++) {
-      emptyArray[y].push(0);
+      questionBlockArray[y].push(0);
     }
   }
-  return emptyArray;
+  return questionBlockArray;
 }
 
 function createRandom2dArray(COLS, ROWS) {
-  let emptyArray = [];
+  let questionBlockArray = [];
   for (let y=0; y<ROWS; y++) {
-    emptyArray.push([]);
+    questionBlockArray.push([]);
     for (let x=0; x<COLS; x++) {
       if (random(100) < 50) {
-        emptyArray[y].push(0);
+        questionBlockArray[y].push(0);
       }
       else {
-        emptyArray[y].push(1);
+        questionBlockArray[y].push(1);
       }
     }
   }
-  return emptyArray;
+  return questionBlockArray;
 }
