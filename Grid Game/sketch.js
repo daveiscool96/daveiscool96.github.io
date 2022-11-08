@@ -15,30 +15,25 @@ let shellY = 0;
 let wall;
 let questionBlock;
 let blueShell;
-let cnv;
 
 function preload() {
   wall = loadImage("brickleRick.png");
-  questionBlock = loadImage("whiteSquare.png");
+  questionBlock = loadImage("questionBlock.webp");
   blueShell = loadImage("tile000.png");
 }
 
 function setup() {
-  
-  cnv = createCanvas(windowWidth, windowHeight);
-  centerCanvas();
+  createCanvas(windowWidth, windowHeight);
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = createRandom2dArray(COLS, ROWS);
   //place player in grid
-  grid[shellY][shellX] = 9;
-}
-function centerCanvas() {
-  
+  grid[shellY][shellX] = 100;
 }
 
+
 function draw() {
-  background("blue");
+  background("lightblue");
   displayGrid(grid);
 }
 
@@ -96,6 +91,8 @@ function keyPressed() {
   }
 }
 
+//only used for level creation
+//should be commented out otherwise
 function mousePressed() {
   let xPos = Math.floor(mouseX/cellWidth);
   let yPos = Math.floor(mouseY/cellHeight);
@@ -140,17 +137,13 @@ function create2dArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
+//fill bricks for level creation
 function createRandom2dArray(COLS, ROWS) {
   let questionBlockArray = [];
   for (let y=0; y<ROWS; y++) {
     questionBlockArray.push([]);
     for (let x=0; x<COLS; x++) {
-      if (random(100) < 50) {
-        questionBlockArray[y].push(0);
-      }
-      else {
-        questionBlockArray[y].push(1);
-      }
+      questionBlockArray[y].push(1);
     }
   }
   return questionBlockArray;
