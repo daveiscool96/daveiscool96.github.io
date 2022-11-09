@@ -352,7 +352,7 @@ function handleKeys() {
       }
       else {
         lookingLeft = false;
-    }
+      }
     if (lookingRight == true) {
       if (spiberX > 0 && spiberX < bgX/48*2 && spiberY < 760 ||spiberX > bgX/48*11 - spiberWidth && spiberX < bgX/48*14 && spiberY < 760 ||spiberX > bgX/48*21 - spiberWidth && spiberX < bgX/48*25 && spiberY < 760 || spiberX > bgX/48*33 - spiberWidth && spiberX < bgX/48*36 && spiberY < 760 ) {
         spiberX -= spiberSpeed;

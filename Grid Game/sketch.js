@@ -17,10 +17,8 @@ let questionBlock;
 let blueShell;
 let shellX = 0;
 let shellY = 0;
-let lookingRight = false;
-let lookingLeft = false;
-let lookingUp = false;
-let lookingDown = false;
+let state;
+let counter = 5;
 
 function preload() {
   wall = loadImage("brickleRick.png");
@@ -36,6 +34,7 @@ function setup() {
   //grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9;
+  //inMotion();
 }
 
 
@@ -46,21 +45,29 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === RIGHT_ARROW) {
-    lookingRight = true;
-    if (grid[shellY][shellX+1] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellX++;
+    state = "right";
+    if (state === "right"){
+      for (let i = 0; i < ;i++)
+      shellX ++;
 
-      //set new player location
-      grid[shellY][shellX] = 9;
+      if (grid[shellY][shellX+1] === 0) {
+        //set direction
+        
+        //reset old location to white
+        grid[shellY][shellX] = 0;
+      
+        //move
+        // if (lookingRight === true) {
+        //   shellX++;
+        // }
+    
+        //set new player location
+        grid[shellY][shellX] = 9;
+      }
     }
+
   }
-  else {
-    lookingRight = false;
-  }
+  
 
   if (keyCode === LEFT_ARROW) {
     lookingLeft = true;
@@ -111,7 +118,11 @@ function keyPressed() {
     lookingDown = false;
   }
 }
-
+// function inMotion() {
+//   if (lookingRight === true) {
+//     shellX++;
+//   }
+// }
 //only used for level creation
 //should be commented out otherwise
 function mousePressed() {
