@@ -10,11 +10,17 @@ const COLS = 40;
 let grid;
 let cellWidth;
 let cellHeight;
-let shellX = 0;
-let shellY = 0;
+
 let wall;
 let questionBlock;
+//player
 let blueShell;
+let shellX = 0;
+let shellY = 0;
+let lookingRight = false;
+let lookingLeft = false;
+let lookingUp = false;
+let lookingDown = false;
 
 function preload() {
   wall = loadImage("brickleRick.png");
@@ -26,9 +32,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
-  grid = createRandom2dArray(COLS, ROWS);
+  grid = create2dArray(COLS, ROWS);
+  //grid = questionBlockArray(COLS, ROWS);
   //place player in grid
-  grid[shellY][shellX] = 100;
+  grid[shellY][shellX] = 9;
 }
 
 
@@ -39,6 +46,7 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === RIGHT_ARROW) {
+    lookingRight = true;
     if (grid[shellY][shellX+1] === 0) {
       //reset old location to white
       grid[shellY][shellX] = 0;
@@ -50,8 +58,12 @@ function keyPressed() {
       grid[shellY][shellX] = 9;
     }
   }
+  else {
+    lookingRight = false;
+  }
 
   if (keyCode === LEFT_ARROW) {
+    lookingLeft = true;
     if (grid[shellY][shellX-1] === 0) {
       //reset old location to white
       grid[shellY][shellX] = 0;
@@ -63,8 +75,11 @@ function keyPressed() {
       grid[shellY][shellX] = 9;
     }
   }
-
+  else {
+    lookingLeft = false;
+  }
   if (keyCode === UP_ARROW) {
+    lookingUp = true;
     if (grid[shellY-1][shellX] === 0) {
       //reset old location to white
       grid[shellY][shellX] = 0;
@@ -76,8 +91,11 @@ function keyPressed() {
       grid[shellY][shellX] = 9;
     }
   }
-
+  else {
+    lookingUp = false;
+  }
   if (keyCode === DOWN_ARROW) {
+    lookingDown = true;
     if (grid[shellY+1][shellX] === 0) {
       //reset old location to white
       grid[shellY][shellX] = 0;
@@ -88,6 +106,9 @@ function keyPressed() {
       //set new player location
       grid[shellY][shellX] = 9;
     }
+  }
+  else {
+    lookingDown = false;
   }
 }
 
@@ -138,13 +159,13 @@ function create2dArray(COLS, ROWS) {
 }
 
 //fill bricks for level creation
-function createRandom2dArray(COLS, ROWS) {
-  let questionBlockArray = [];
-  for (let y=0; y<ROWS; y++) {
-    questionBlockArray.push([]);
-    for (let x=0; x<COLS; x++) {
-      questionBlockArray[y].push(1);
-    }
-  }
-  return questionBlockArray;
-}
+// function questionBlockArray(COLS, ROWS) {
+//   let questionBlockArray = [];
+//   for (let y=0; y<ROWS; y++) {
+//     questionBlockArray.push([]);
+//     for (let x=0; x<COLS; x++) {
+//       questionBlockArray[y].push(1);
+//     }
+//   }
+//   return questionBlockArray;
+// }
