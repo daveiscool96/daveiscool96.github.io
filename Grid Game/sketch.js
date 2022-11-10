@@ -18,7 +18,7 @@ let blueShell;
 let shellX = 0;
 let shellY = 0;
 let state;
-let counter = 5;
+
 
 function preload() {
   wall = loadImage("brickleRick.png");
@@ -44,32 +44,37 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === RIGHT_ARROW) {
+  if (keyCode === RIGHT_ARROW || keyPressed(68)) {
     state = "right";
     if (state === "right"){
-      for (let i = 0; i < ;i++)
-      shellX ++;
-
-      if (grid[shellY][shellX+1] === 0) {
-        //set direction
-        
-        //reset old location to white
+      for (let i = 0; i < 5; i++) {
+        //reset old location
         grid[shellY][shellX] = 0;
+        //move
+        shellX ++; 
+        //set new player location
+        grid[shellY][shellX] = 9;
+      }
+      
+
+      // if (grid[shellY][shellX+1] === 0) {
+      //   //set direction
+        
+        
       
         //move
         // if (lookingRight === true) {
         //   shellX++;
         // }
     
-        //set new player location
-        grid[shellY][shellX] = 9;
-      }
+        
+      // }
     }
 
   }
   
 
-  if (keyCode === LEFT_ARROW) {
+  if (keyCode === LEFT_ARROW || keyPressed(65)) {
     lookingLeft = true;
     if (grid[shellY][shellX-1] === 0) {
       //reset old location to white
@@ -85,7 +90,7 @@ function keyPressed() {
   else {
     lookingLeft = false;
   }
-  if (keyCode === UP_ARROW) {
+  if (keyCode === UP_ARROW || keyPressed(87)) {
     lookingUp = true;
     if (grid[shellY-1][shellX] === 0) {
       //reset old location to white
@@ -101,7 +106,7 @@ function keyPressed() {
   else {
     lookingUp = false;
   }
-  if (keyCode === DOWN_ARROW) {
+  if (keyCode === DOWN_ARROW || keyPressed(83)) {
     lookingDown = true;
     if (grid[shellY+1][shellX] === 0) {
       //reset old location to white
