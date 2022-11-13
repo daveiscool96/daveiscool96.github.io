@@ -13,17 +13,22 @@ let cellHeight;
 
 let wall;
 let questionBlock;
+
 //player
 let blueShell;
 let shellX = 0;
 let shellY = 0;
 let state;
 
+//player sprite
+let spriteArray;
+
 
 function preload() {
   wall = loadImage("brickleRick.png");
   questionBlock = loadImage("questionBlock.webp");
   blueShell = loadImage("tile000.png");
+  spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
 }
 
 function setup() {
