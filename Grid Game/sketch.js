@@ -25,7 +25,7 @@ let spriteArray;
 
 
 function preload() {
-  wall = loadImage("newBrick.png");
+  wall = loadImage("blockO.png");
   questionBlock = loadImage("questionBlock.webp");
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
 }
