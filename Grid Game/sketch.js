@@ -1,24 +1,23 @@
 // Shell Smash
 // David Hutcheson
-// 
-//
 // Extra for Experts:
-// 
 
+//structure
 const ROWS = 40;
 const COLS = 40;
 let grid;
 let cellWidth;
 let cellHeight;
 
+//environment
 let wall;
 let questionBlock;
 
 //player
 let blueShell;
-let shellX = 0;
-let shellY = 0;
-let state;
+let shellX = 19;
+let shellY = 10;
+let directionState;
 
 //player sprite
 let spriteArray;
@@ -27,7 +26,6 @@ let spriteArray;
 function preload() {
   wall = loadImage("brickleRick.png");
   questionBlock = loadImage("questionBlock.webp");
-  blueShell = loadImage("tile000.png");
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
 }
 
@@ -36,44 +34,47 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  //grid = questionBlockArray(COLS, ROWS);
+  //grid = questionBlockArray(COLS, ROWS); //commented out bellow
   //place player in grid
-  grid[shellY][shellX] = 9;
-  //inMotion();
+  grid[shellY][shellX] = 9; 
+  //inMotion(); //may have use later
+  animate(); //should work later
 }
-
 
 function draw() {
   background("lightblue");
   displayGrid(grid);
 }
 
+//will be replaced with level
+function create2dArray(COLS, ROWS) {
+  let questionBlockArray = [];
+  for (let y=0; y<ROWS; y++) {
+    questionBlockArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      questionBlockArray[y].push(0);
+    }
+  }
+  return questionBlockArray;
+}
+
+//animate sprite
+function animate() {
+  for (let i = 0; i < spriteArray.length; i++) {
+    blueShell = spriteArray[i];
+  }
+}
+
 function keyPressed() {
   if (keyCode === RIGHT_ARROW || keyPressed(68)) {
-    state = "right";
-    if (state === "right"){
       for (let i = 0; i < 5; i++) {
         //reset old location
-        grid[shellY][shellX] = 0;
+        grid[shellY][shellX] = 10;
         //move
         shellX ++; 
         //set new player location
         grid[shellY][shellX] = 9;
       }
-      
-
-      // if (grid[shellY][shellX+1] === 0) {
-      //   //set direction
-        
-        
-      
-        //move
-        // if (lookingRight === true) {
-        //   shellX++;
-        // }
-    
-        
-      // }
     }
 
   }
@@ -112,7 +113,7 @@ function keyPressed() {
     lookingUp = false;
   }
   if (keyCode === DOWN_ARROW || keyPressed(83)) {
-    lookingDown = true;
+
     if (grid[shellY+1][shellX] === 0) {
       //reset old location to white
       grid[shellY][shellX] = 0;
@@ -127,12 +128,8 @@ function keyPressed() {
   else {
     lookingDown = false;
   }
-}
-// function inMotion() {
-//   if (lookingRight === true) {
-//     shellX++;
-//   }
-// }
+
+
 //only used for level creation
 //should be commented out otherwise
 function mousePressed() {
@@ -147,37 +144,32 @@ function mousePressed() {
   }
 }
 
+//make so it stays blue when touched
+//places things in grid
 function displayGrid(grid) {
   for (let y=0; y<ROWS; y++) {
     for (let x=0; x<COLS; x++) {
       if (grid[y][x] === 0) {
-        // 
+        //make question block
         image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       else if (grid[y][x] === 1) {
-        // fill("black");
+        //make a wall
         image(wall, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       else if (grid[y][x] === 9) {
-        // fill("red");
-        // rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        //make player
         image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+      }
+      else if (grid[y][x] === 10) {
+        //make blue
+        fill("lightblue");
       }
     }
   }
 }
 
-function create2dArray(COLS, ROWS) {
-  let questionBlockArray = [];
-  for (let y=0; y<ROWS; y++) {
-    questionBlockArray.push([]);
-    for (let x=0; x<COLS; x++) {
-      questionBlockArray[y].push(0);
-    }
-  }
-  return questionBlockArray;
-}
+
 
 //fill bricks for level creation
 // function questionBlockArray(COLS, ROWS) {
