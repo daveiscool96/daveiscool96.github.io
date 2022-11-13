@@ -1,6 +1,6 @@
 // Shell Smash
 // David Hutcheson
-// Extra for Experts:
+// Extra for Experts:  
 
 //structure
 const ROWS = 40;
@@ -18,6 +18,7 @@ let blueShell;
 let shellX = 19;
 let shellY = 10;
 let directionState;
+let interval = 0;
 
 //player sprite
 let spriteArray;
@@ -66,68 +67,63 @@ function animate() {
 }
 
 function keyPressed() {
-  if (keyCode === RIGHT_ARROW || keyPressed(68)) {
-      for (let i = 0; i < 5; i++) {
-        //reset old location
+  if (keyCode === RIGHT_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY][shellX+1] !== 1) {
+        //make old location blue
         grid[shellY][shellX] = 10;
         //move
-        shellX ++; 
+        shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
       }
     }
-
   }
+
+  if (keyCode === LEFT_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      if (grid[shellY][shellX-1] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
+        //move
+        shellX--;
+        //set new player location
+        grid[shellY][shellX] = 9;
+      }
+    }
+  }
+
+  if (keyCode === UP_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY-1][shellX] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
+        //move
+        shellY--;
+        //set new player location
+        grid[shellY][shellX] = 9;
+      }
+    }
+  }
+
+  if (keyCode === DOWN_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY+1][shellX] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
+        //move
+        shellY++;
+        //set new player location
+        grid[shellY][shellX] = 9;
+      }
+    }
+  }
+}  
   
-
-  if (keyCode === LEFT_ARROW || keyPressed(65)) {
-    lookingLeft = true;
-    if (grid[shellY][shellX-1] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellX--;
-
-      //set new player location
-      grid[shellY][shellX] = 9;
-    }
-  }
-  else {
-    lookingLeft = false;
-  }
-  if (keyCode === UP_ARROW || keyPressed(87)) {
-    lookingUp = true;
-    if (grid[shellY-1][shellX] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellY--;
-
-      //set new player location
-      grid[shellY][shellX] = 9;
-    }
-  }
-  else {
-    lookingUp = false;
-  }
-  if (keyCode === DOWN_ARROW || keyPressed(83)) {
-
-    if (grid[shellY+1][shellX] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellY++;
-
-      //set new player location
-      grid[shellY][shellX] = 9;
-    }
-  }
-  else {
-    lookingDown = false;
-  }
+//   
 
 
 //only used for level creation
@@ -169,6 +165,11 @@ function displayGrid(grid) {
   }
 }
 
+//start screen
+//space to start
+//space to restart
+//end screen
+//space to play again
 
 
 //fill bricks for level creation
