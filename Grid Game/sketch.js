@@ -18,7 +18,7 @@ let blueShell;
 let shellX = 19;
 let shellY = 10;
 let directionState;
-let interval = 0;
+let interval = 10;
 
 //player sprite
 let spriteArray;
@@ -35,7 +35,7 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  //grid = questionBlockArray(COLS, ROWS); //commented out bellow
+  grid = questionBlockArray(COLS, ROWS); //commented out bellow
   //place player in grid
   grid[shellY][shellX] = 9; 
   //inMotion(); //may have use later
@@ -47,6 +47,7 @@ function draw() {
   displayGrid(grid);
 }
 
+//level creator
 //will be replaced with level
 function create2dArray(COLS, ROWS) {
   let questionBlockArray = [];
@@ -54,6 +55,18 @@ function create2dArray(COLS, ROWS) {
     questionBlockArray.push([]);
     for (let x=0; x<COLS; x++) {
       questionBlockArray[y].push(0);
+    }
+  }
+  return questionBlockArray;
+}
+
+//fill bricks for level creation
+function questionBlockArray(COLS, ROWS) {
+  let questionBlockArray = [];
+  for (let y=0; y<ROWS; y++) {
+    questionBlockArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      questionBlockArray[y].push(1);
     }
   }
   return questionBlockArray;
@@ -169,17 +182,7 @@ function displayGrid(grid) {
 //space to start
 //space to restart
 //end screen
+//triggered by function that counts number of question blocks and returns 0
 //space to play again
 
 
-//fill bricks for level creation
-// function questionBlockArray(COLS, ROWS) {
-//   let questionBlockArray = [];
-//   for (let y=0; y<ROWS; y++) {
-//     questionBlockArray.push([]);
-//     for (let x=0; x<COLS; x++) {
-//       questionBlockArray[y].push(1);
-//     }
-//   }
-//   return questionBlockArray;
-// }
