@@ -17,17 +17,22 @@ let questionBlock;
 let blueShell;
 let shellX = 19;
 let shellY = 10;
-let directionState;
-let interval = 10;
 
 //player sprite
-let spriteArray;
-
+let spriteArray = [];
+let s1, s2, s3, s4, s5, s6;
 
 function preload() {
+  blueShell = loadImage("tile000.png");
   wall = loadImage("blockO.png");
   questionBlock = loadImage("questionBlock.webp");
-  spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
+  s1= loadImage("tile000.png");
+  s2 = loadImage("tile001.png");
+  s3 = loadImage("tile002.png");
+  s4 = loadImage("tile003.png");
+  s5 = loadImage("tile004.png");
+  s6 = loadImage("tile005.png");
+  spriteArray = [s1, s2, s3, s4, s5, s6];
 }
 
 function setup() {
@@ -38,8 +43,6 @@ function setup() {
   grid = questionBlockArray(COLS, ROWS); //commented out bellow
   //place player in grid
   grid[shellY][shellX] = 9; 
-  //inMotion(); //may have use later
-  animate(); //should work later
 }
 
 function draw() {
@@ -74,8 +77,9 @@ function questionBlockArray(COLS, ROWS) {
 
 //animate sprite
 function animate() {
-  for (let i = 0; i < spriteArray.length; i++) {
-    blueShell = spriteArray[i];
+  for (let z=0; z<6; z++) {
+    blueShell = spriteArray[z-1];
+    image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
   }
 }
 
@@ -90,6 +94,7 @@ function keyPressed() {
         shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
+        animate();
       }
     }
   }
@@ -103,6 +108,7 @@ function keyPressed() {
         shellX--;
         //set new player location
         grid[shellY][shellX] = 9;
+        animate();
       }
     }
   }
@@ -117,6 +123,7 @@ function keyPressed() {
         shellY--;
         //set new player location
         grid[shellY][shellX] = 9;
+        animate();
       }
     }
   }
@@ -131,6 +138,7 @@ function keyPressed() {
         shellY++;
         //set new player location
         grid[shellY][shellX] = 9;
+        animate();
       }
     }
   }
@@ -168,7 +176,8 @@ function displayGrid(grid) {
       }
       else if (grid[y][x] === 9) {
         //make player
-        image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        // image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        animate();
       }
       else if (grid[y][x] === 10) {
         //make blue
