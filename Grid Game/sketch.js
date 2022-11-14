@@ -19,20 +19,13 @@ let shellX = 19;
 let shellY = 10;
 
 //player sprite
-let spriteArray = [];
-let s1, s2, s3, s4, s5, s6;
+let spriteArray;
 
 function preload() {
-  blueShell = loadImage("tile000.png");
   wall = loadImage("blockO.png");
   questionBlock = loadImage("questionBlock.webp");
-  s1= loadImage("tile000.png");
-  s2 = loadImage("tile001.png");
-  s3 = loadImage("tile002.png");
-  s4 = loadImage("tile003.png");
-  s5 = loadImage("tile004.png");
-  s6 = loadImage("tile005.png");
-  spriteArray = [s1, s2, s3, s4, s5, s6];
+  spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
+  blueShell = loadImage("tile000.png");
 }
 
 function setup() {
@@ -75,13 +68,7 @@ function questionBlockArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
-//animate sprite
-// function animate() {
-//   for (let z=0; z<6; z++) {
-//     blueShell = spriteArray[z-1];
-//     image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-//   }
-// }
+
 
 function keyPressed() {
   if (keyCode === RIGHT_ARROW) {
@@ -94,7 +81,7 @@ function keyPressed() {
         shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
-        // animate();
+        animate();
       }
     }
   }
@@ -108,7 +95,7 @@ function keyPressed() {
         shellX--;
         //set new player location
         grid[shellY][shellX] = 9;
-        // animate();
+        animate();
       }
     }
   }
@@ -123,7 +110,7 @@ function keyPressed() {
         shellY--;
         //set new player location
         grid[shellY][shellX] = 9;
-        // animate();
+        animate();
       }
     }
   }
@@ -138,14 +125,17 @@ function keyPressed() {
         shellY++;
         //set new player location
         grid[shellY][shellX] = 9;
-        // animate();
+        animate();
       }
     }
   }
 }  
-  
-//   
 
+function animate() {
+  for (let i=0; i<spriteArray.length+1; i++) {
+    blueShell = spriteArray[i-1];
+  }
+}
 
 //only used for level creation
 //should be commented out otherwise
@@ -176,10 +166,8 @@ function displayGrid(grid) {
       }
       else if (grid[y][x] === 9) {
         //make player
-        for (let z=0; z<6; z++) {
-          blueShell = spriteArray[z-1];
-          image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        }
+        image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        
       }
       else if (grid[y][x] === 10) {
         //make blue
@@ -195,5 +183,3 @@ function displayGrid(grid) {
 //end screen
 //triggered by function that counts number of question blocks and returns 0
 //space to play again
-
-
