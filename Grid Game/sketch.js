@@ -14,6 +14,11 @@ let cellHeight;
 let wall;
 let questionBlock;
 
+// levels
+let L1;
+let L2;
+let L3;
+
 //player
 let blueShell;
 let shellX = 19;
@@ -27,6 +32,9 @@ function preload() {
   questionBlock = loadImage("questionBlock.webp");
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
+  L1 = loadJSON("level1.json");
+  L2 = loadJSON("level2.json");
+  L3 = loadJSON("level3.json");
 }
 
 function setup() {
@@ -47,7 +55,6 @@ function draw() {
     background("lightblue");
     displayGrid(grid);
   // }
- 
 }
 
 // function startScreen() {
