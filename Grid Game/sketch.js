@@ -2,6 +2,7 @@
 // David Hutcheson
 // Extra for Experts:  
 
+let state = "start";
 //structure
 const ROWS = 40;
 const COLS = 40;
@@ -33,15 +34,27 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  grid = questionBlockArray(COLS, ROWS); //commented out bellow
+  grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
 }
 
 function draw() {
-  background("lightblue");
-  displayGrid(grid);
+  // if (state === "start") {
+  //   startScreen()
+  // }
+  // if (state = "game") {
+    background("lightblue");
+    displayGrid(grid);
+  // }
+ 
 }
+
+// function startScreen() {
+//   fill("white");
+//   textSize(50);
+//   text("Press Space to Begin!", 480, 490);
+// }
 
 //level creator
 //will be replaced with level
