@@ -1,28 +1,30 @@
 // Shell Smash
 // David Hutcheson
-// 
-//
-// Extra for Experts:
-// 
+// Extra for Experts:  
 
+//structure
 const ROWS = 40;
 const COLS = 40;
 let grid;
 let cellWidth;
 let cellHeight;
 
+//environment
 let wall;
 let questionBlock;
+
 //player
 let blueShell;
-let shellX = 0;
-let shellY = 0;
-let state;
+let shellX = 19;
+let shellY = 10;
 
+//player sprite
+let spriteArray;
 
 function preload() {
-  wall = loadImage("brickleRick.png");
+  wall = loadImage("blockO.png");
   questionBlock = loadImage("questionBlock.webp");
+  spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
 }
 
@@ -31,98 +33,110 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  //grid = questionBlockArray(COLS, ROWS);
+  grid = questionBlockArray(COLS, ROWS); //commented out bellow
   //place player in grid
-  grid[shellY][shellX] = 9;
-  //inMotion();
+  grid[shellY][shellX] = 9; 
 }
-
 
 function draw() {
   background("lightblue");
   displayGrid(grid);
 }
 
+//level creator
+//will be replaced with level
+function create2dArray(COLS, ROWS) {
+  let questionBlockArray = [];
+  for (let y=0; y<ROWS; y++) {
+    questionBlockArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      questionBlockArray[y].push(0);
+    }
+  }
+  return questionBlockArray;
+}
+
+//fill bricks for level creation
+function questionBlockArray(COLS, ROWS) {
+  let questionBlockArray = [];
+  for (let y=0; y<ROWS; y++) {
+    questionBlockArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      questionBlockArray[y].push(1);
+    }
+  }
+  return questionBlockArray;
+}
+
+
+
 function keyPressed() {
-  if (keyCode === RIGHT_ARROW || keyPressed(68)) {
-    state = "right";
-    if (state === "right"){
-      for (let i = 0; i < 5; i++) {
-        //reset old location
-        grid[shellY][shellX] = 0;
+  if (keyCode === RIGHT_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY][shellX+1] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
         //move
-        shellX ++; 
+        shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
+        animate();
       }
-      
+    }
+  }
 
-      // if (grid[shellY][shellX+1] === 0) {
-      //   //set direction
-        
-        
-      
+  if (keyCode === LEFT_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      if (grid[shellY][shellX-1] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
         //move
-        // if (lookingRight === true) {
-        //   shellX++;
-        // }
-    
-        
-      // }
-    }
-
-  }
-  
-
-  if (keyCode === LEFT_ARROW || keyPressed(65)) {
-    if (grid[shellY][shellX-1] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellX--;
-
-      //set new player location
-      grid[shellY][shellX] = 9;
+        shellX--;
+        //set new player location
+        grid[shellY][shellX] = 9;
+        animate();
+      }
     }
   }
-  // else {
-  // }
-  if (keyCode === UP_ARROW || keyPressed(87)) {
-    
-    if (grid[shellY-1][shellX] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellY--;
 
-      //set new player location
-      grid[shellY][shellX] = 9;
+  if (keyCode === UP_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY-1][shellX] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
+        //move
+        shellY--;
+        //set new player location
+        grid[shellY][shellX] = 9;
+        animate();
+      }
     }
   }
-  // else {
-  // }
-  if (keyCode === DOWN_ARROW || keyPressed(83)) {
-    if (grid[shellY+1][shellX] === 0) {
-      //reset old location to white
-      grid[shellY][shellX] = 0;
-      
-      //move
-      shellY++;
 
-      //set new player location
-      grid[shellY][shellX] = 9;
+  if (keyCode === DOWN_ARROW) {
+    for (let i = 0; i < 20; i++) {
+      //if no brick move
+      if (grid[shellY+1][shellX] !== 1) {
+        //make old location blue
+        grid[shellY][shellX] = 10;
+        //move
+        shellY++;
+        //set new player location
+        grid[shellY][shellX] = 9;
+        animate();
+      }
     }
   }
-  // else {
-  // }
+}  
+
+function animate() {
+  for (let i=0; i<spriteArray.length+1; i++) {
+    blueShell = spriteArray[i-1];
+  }
 }
-// function inMotion() {
-//   if (lookingRight === true) {
-//     shellX++;
-//   }
-// }
+
 //only used for level creation
 //should be commented out otherwise
 function mousePressed() {
@@ -137,46 +151,35 @@ function mousePressed() {
   }
 }
 
+//make so it stays blue when touched
+//places things in grid
 function displayGrid(grid) {
   for (let y=0; y<ROWS; y++) {
     for (let x=0; x<COLS; x++) {
       if (grid[y][x] === 0) {
-        // 
+        //make question block
         image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       else if (grid[y][x] === 1) {
-        // fill("black");
+        //make a wall
         image(wall, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       else if (grid[y][x] === 9) {
-        // fill("red");
-        // rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        image(questionBlock, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        //make player
         image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        
+      }
+      else if (grid[y][x] === 10) {
+        //make blue
+        fill("lightblue");
       }
     }
   }
 }
 
-function create2dArray(COLS, ROWS) {
-  let questionBlockArray = [];
-  for (let y=0; y<ROWS; y++) {
-    questionBlockArray.push([]);
-    for (let x=0; x<COLS; x++) {
-      questionBlockArray[y].push(0);
-    }
-  }
-  return questionBlockArray;
-}
-
-//fill bricks for level creation
-// function questionBlockArray(COLS, ROWS) {
-//   let questionBlockArray = [];
-//   for (let y=0; y<ROWS; y++) {
-//     questionBlockArray.push([]);
-//     for (let x=0; x<COLS; x++) {
-//       questionBlockArray[y].push(1);
-//     }
-//   }
-//   return questionBlockArray;
-// }
+//start screen
+//space to start
+//space to restart
+//end screen
+//triggered by function that counts number of question blocks and returns 0
+//space to play again
