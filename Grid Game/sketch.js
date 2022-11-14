@@ -76,12 +76,12 @@ function questionBlockArray(COLS, ROWS) {
 }
 
 //animate sprite
-function animate() {
-  for (let z=0; z<6; z++) {
-    blueShell = spriteArray[z-1];
-    image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-  }
-}
+// function animate() {
+//   for (let z=0; z<6; z++) {
+//     blueShell = spriteArray[z-1];
+//     image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+//   }
+// }
 
 function keyPressed() {
   if (keyCode === RIGHT_ARROW) {
@@ -94,7 +94,7 @@ function keyPressed() {
         shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        // animate();
       }
     }
   }
@@ -108,7 +108,7 @@ function keyPressed() {
         shellX--;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        // animate();
       }
     }
   }
@@ -123,7 +123,7 @@ function keyPressed() {
         shellY--;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        // animate();
       }
     }
   }
@@ -138,7 +138,7 @@ function keyPressed() {
         shellY++;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        // animate();
       }
     }
   }
@@ -176,8 +176,10 @@ function displayGrid(grid) {
       }
       else if (grid[y][x] === 9) {
         //make player
-        // image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        animate();
+        for (let z=0; z<6; z++) {
+          blueShell = spriteArray[z-1];
+          image(blueShell, x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        }
       }
       else if (grid[y][x] === 10) {
         //make blue
