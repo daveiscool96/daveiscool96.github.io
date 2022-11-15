@@ -43,17 +43,17 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  // grid = questionBlockArray(COLS, ROWS);
+  //grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
   //start level 1
   grid = levels[0];
-  // next();
+  // next(COLS, ROWS);
 }
 
 function draw() {
   if (state === "start") {
-    startScreen()
+    startScreen();
   }
   if (state === "game") {
     background("lightblue");
@@ -93,20 +93,11 @@ function create2dArray(COLS, ROWS) {
 // }
 
 //next level
-// function next() {
-//   marks = 0;
+// function next(COLS, ROWS) {
+//   let next = [];
 //   for (let y=0; y<ROWS; y++) {
 //     for (let x=0; x<COLS; x++) {
-//       //count how many left
-//       if (someArray[y][x] === 0) {
-//         marks++
-//       }
-//     }
-//   }
-//   //next level
-//   for (let z=0; z<2; z++){
-//     if (marks === 0) {
-//       grid = levels[z];
+      
 //     }
 //   }
 // }
@@ -125,7 +116,7 @@ function keyPressed() {
     shellX = 19;
     shellY = 10;
   }
-  if (state === "start" && key === " ") {
+  if (state === "start" && key === " " || state === "end" && key === " " ) {
     state = "game";
   }
   
@@ -243,7 +234,6 @@ function displayGrid(grid) {
 }
 
 //start screen
-//space to start
 //when complete next level
 //when complete last level
 //end screen
