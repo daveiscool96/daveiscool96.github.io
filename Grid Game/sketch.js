@@ -60,11 +60,15 @@ function draw() {
     displayGrid(grid);
   }
   if (state === 2) {
+    background("lightblue");
+    displayGrid(grid);
     grid = levels[1];
     shellX = 19;
     shellY = 10;
   }
   if (state === 3) {
+    background("lightblue");
+    displayGrid(grid);
     grid = levels[2];
     shellX = 19;
     shellY = 10;
@@ -129,9 +133,9 @@ function keyPressed() {
   if (state === 0 && key === " " || state === 4 && key === " " ) {
     state = 1;
   }
-  if (key === " " ) {
-    state = step++;
-  }
+  // if (key === " " ) {
+  //   state++;
+  // }
   
 
   if (keyCode === RIGHT_ARROW) {
