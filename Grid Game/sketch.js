@@ -15,10 +15,10 @@ let questionBlock;
 
 // levels
 let levels = [];
-let step = 0;
 let state = 0;
 let ss; 
 let es;
+let counter;
 
 //player
 let blueShell;
@@ -27,7 +27,7 @@ let shellY = 10;
 
 //player sprite
 let spriteArray = [];
-
+let t = 0;
 
 function preload() {
   wall = loadImage("blockO.png");
@@ -46,16 +46,15 @@ function setup() {
   grid = create2dArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
-  //start level 1
-  grid = levels[0];
-  // next(COLS, ROWS);
 }
 
 function draw() {
+  next(COLS, ROWS);
   if (state === 0) {
     startScreen();
   }
   if (state === 1) {
+    grid = levels[0];
     background("lightblue");
     displayGrid(grid);
   }
@@ -101,18 +100,19 @@ function create2dArray(COLS, ROWS) {
 
 //next level
 function next(COLS, ROWS) {
-  // for (let y=0; y<ROWS; y++) {
-  //   for (let x=0; x<COLS; x++) {
-  //     if (grid[y][x] === 0) {
-  //       state = step;
-  //     }
-  //     else {
-  //       step++;
-  //       state = step;
-  //     }
-  //   }
-  // }
-  
+  counter = 0;
+  if (state === 1 || state === 2 || state === 3) {
+    for (let y=0; y<ROWS; y++) {
+      for (let x=0; x<COLS; x++) {
+        if (grid[y][x] === 0) {
+          counter++
+        }
+      }
+    }
+  }
+  if (counter === 0) {
+    state++;
+  }
 }
 
 function keyPressed() {
@@ -133,7 +133,7 @@ function keyPressed() {
   if (state === 0 && key === " " || state === 4 && key === " " ) {
     state = 1;
   }
-  // if (key === " " ) {
+  // if (key === " " && state !== 4) {
   //   state++;
   // }
   
@@ -249,10 +249,3 @@ function displayGrid(grid) {
     }
   }
 }
-
-//start screen
-//when complete next level
-//when complete last level
-//end screen
-//triggered by function that counts number of question blocks and returns 0
-//space to play again
