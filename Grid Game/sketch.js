@@ -43,18 +43,19 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  grid = questionBlockArray(COLS, ROWS);
+  // grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
-  grid = L1;
-  next();
+  //start level 1
+  grid = levels[0];
+  // next();
 }
 
 function draw() {
   if (state === "start") {
     startScreen()
   }
-  if (state = "game") {
+  if (state === "game") {
     background("lightblue");
     displayGrid(grid);
   }
@@ -79,36 +80,36 @@ function create2dArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
-//fill bricks for level creation
-function questionBlockArray(COLS, ROWS) {
-  let questionBlockArray = [];
-  for (let y=0; y<ROWS; y++) {
-    questionBlockArray.push([]);
-    for (let x=0; x<COLS; x++) {
-      questionBlockArray[y].push(1);
-    }
-  }
-  return questionBlockArray;
-}
+// //fill bricks for level creation
+// function questionBlockArray(COLS, ROWS) {
+//   let questionBlockArray = [];
+//   for (let y=0; y<ROWS; y++) {
+//     questionBlockArray.push([]);
+//     for (let x=0; x<COLS; x++) {
+//       questionBlockArray[y].push(1);
+//     }
+//   }
+//   return questionBlockArray;
+// }
 
 //next level
-function next() {
-  marks = 0;
-  for (let y=0; y<ROWS; y++) {
-    for (let x=0; x<COLS; x++) {
-      //count how many left
-      if (someArray[y][x] === 0) {
-        marks++
-      }
-    }
-  }
-  //next level
-  for (let z=0; z<2; z++){
-    if (marks === 0) {
-      grid = levels[z++]
-    }
-  }
-}
+// function next() {
+//   marks = 0;
+//   for (let y=0; y<ROWS; y++) {
+//     for (let x=0; x<COLS; x++) {
+//       //count how many left
+//       if (someArray[y][x] === 0) {
+//         marks++
+//       }
+//     }
+//   }
+//   //next level
+//   for (let z=0; z<2; z++){
+//     if (marks === 0) {
+//       grid = levels[z];
+//     }
+//   }
+// }
 
 function keyPressed() {
   if (key === "1") {
@@ -116,10 +117,18 @@ function keyPressed() {
   }
   if (key === "2") {
     grid = levels[1];
+    shellX = 19;
+    shellY = 10;
   }
   if (key === "3") {
-    grid = levels[3];
+    grid = levels[2];
+    shellX = 19;
+    shellY = 10;
   }
+  if (state === "start" && key === " ") {
+    state = "game";
+  }
+  
 
   if (keyCode === RIGHT_ARROW) {
     for (let i = 0; i < 20; i++) {
@@ -189,7 +198,6 @@ function animate() {
 if (t === 6) {
   t = 0;
 }
-
 blueShell = spriteArray[t];
 t++
 }
