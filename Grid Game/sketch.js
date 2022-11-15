@@ -49,7 +49,6 @@ function setup() {
 }
 
 function draw() {
-  next(COLS, ROWS);
   if (state === 0) {
     startScreen();
   }
@@ -57,20 +56,19 @@ function draw() {
     grid = levels[0];
     background("lightblue");
     displayGrid(grid);
+    next(COLS, ROWS);
   }
   if (state === 2) {
     background("lightblue");
     displayGrid(grid);
     grid = levels[1];
-    shellX = 19;
-    shellY = 10;
+    next(COLS, ROWS);
   }
   if (state === 3) {
     background("lightblue");
     displayGrid(grid);
     grid = levels[2];
-    shellX = 19;
-    shellY = 10;
+    next(COLS, ROWS);
   }
   if (state === 4) {
     endScreen();
@@ -112,31 +110,16 @@ function next(COLS, ROWS) {
   }
   if (counter === 0) {
     state++;
+    shellX = 19;
+    shellY = 10;
   }
 }
 
 function keyPressed() {
-  if (key === "1") {
-    grid = levels[0];
-  }
-  if (key === "2") {
-    grid = levels[1];
-    shellX = 19;
-    shellY = 10;
-  }
-  if (key === "3") {
-    grid = levels[2];
-    shellX = 19;
-    shellY = 10;
-  }
   
-  if (state === 0 && key === " " || state === 4 && key === " " ) {
+  if (key === " ") {
     state = 1;
   }
-  // if (key === " " && state !== 4) {
-  //   state++;
-  // }
-  
 
   if (keyCode === RIGHT_ARROW) {
     for (let i = 0; i < 20; i++) {
