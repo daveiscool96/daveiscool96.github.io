@@ -1,6 +1,8 @@
 // Shell Smash
 // David Hutcheson
-// Extra for Experts:  
+// Extra for Experts: tweaked 2d array to move until comes in contact with something 
+                    // for (let i = 0; i < 20; i++) {
+                        // if (grid[shellY][shellX+1] !== 1) 
 
 //structure
 const ROWS = 40;
@@ -43,12 +45,14 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
+  //create base grid
   grid = create2dArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
 }
 
 function draw() {
+  //checks for level and plays it
   if (state === 0) {
     startScreen();
   }
@@ -83,8 +87,8 @@ function endScreen() {
   image(es, 0, 0, windowWidth, windowHeight);
 }
 
-//level creator
-//will be replaced with level
+//grid creator
+//replaced with level
 function create2dArray(COLS, ROWS) {
   let questionBlockArray = [];
   for (let y=0; y<ROWS; y++) {
@@ -96,18 +100,21 @@ function create2dArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
-//next level
+//changes to next level
 function next(COLS, ROWS) {
   counter = 0;
+  //checks if on level
   if (state === 1 || state === 2 || state === 3) {
     for (let y=0; y<ROWS; y++) {
       for (let x=0; x<COLS; x++) {
+        //counts number of questionBlocks
         if (grid[y][x] === 0) {
           counter++
         }
       }
     }
   }
+  //moves on if all blocks are destroyed
   if (counter === 0) {
     state++;
     shellX = 19;
@@ -116,7 +123,7 @@ function next(COLS, ROWS) {
 }
 
 function keyPressed() {
-  
+  //start from beginning
   if (key === " ") {
     state = 1;
   }
@@ -139,6 +146,7 @@ function keyPressed() {
 
   if (keyCode === LEFT_ARROW) {
     for (let i = 0; i < 20; i++) {
+      //if no brick move
       if (grid[shellY][shellX-1] !== 1) {
         //make old location blue
         grid[shellY][shellX] = 10;
@@ -185,6 +193,7 @@ function keyPressed() {
   }
 }  
 
+//animate 1 frame when moved
 function animate() {
 if (t === 6) {
   t = 0;
@@ -193,21 +202,7 @@ blueShell = spriteArray[t];
 t++
 }
 
-//only used for level creation
-//should be commented out otherwise
-function mousePressed() {
-  let xPos = Math.floor(mouseX/cellWidth);
-  let yPos = Math.floor(mouseY/cellHeight);
 
-  if (grid[yPos][xPos] === 0) {
-    grid[yPos][xPos] = 1;
-  }
-  else if (grid[yPos][xPos] === 1) {
-    grid[yPos][xPos] = 0;
-  }
-}
-
-//make so it stays blue when touched
 //places things in grid
 function displayGrid(grid) {
   for (let y=0; y<ROWS; y++) {
