@@ -17,7 +17,8 @@ let questionBlock;
 let levels = [];
 let step = 0;
 let state = 0;
-let bg; 
+let ss; 
+let es;
 
 //player
 let blueShell;
@@ -34,7 +35,8 @@ function preload() {
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
   levels = [loadJSON("level1.json"), loadJSON("level2.json"), loadJSON("level3.json")];
-  bg = loadImage("StartScreen.png");
+  ss = loadImage("StartScreen.png");
+  es = loadImage("endScreen.png");
 }
 
 function setup() {
@@ -73,12 +75,12 @@ function draw() {
 }
 
 function startScreen() {
-  image(bg, 0, 0, windowWidth, windowHeight);
+  image(ss, 0, 0, windowWidth, windowHeight);
 }
 
-// function endScreen() {
-//   image(, 0, 0, windowWidth, windowHeight);
-// }
+function endScreen() {
+  image(es, 0, 0, windowWidth, windowHeight);
+}
 
 //level creator
 //will be replaced with level
@@ -95,17 +97,18 @@ function create2dArray(COLS, ROWS) {
 
 //next level
 function next(COLS, ROWS) {
-  for (let y=0; y<ROWS; y++) {
-    for (let x=0; x<COLS; x++) {
-      if (grid[y][x] === 0) {
-        state = step;
-      }
-      else {
-        step++;
-        state = step;
-      }
-    }
-  }
+  // for (let y=0; y<ROWS; y++) {
+  //   for (let x=0; x<COLS; x++) {
+  //     if (grid[y][x] === 0) {
+  //       state = step;
+  //     }
+  //     else {
+  //       step++;
+  //       state = step;
+  //     }
+  //   }
+  // }
+  
 }
 
 function keyPressed() {
@@ -125,6 +128,9 @@ function keyPressed() {
   
   if (state === 0 && key === " " || state === 4 && key === " " ) {
     state = 1;
+  }
+  if (key === " " ) {
+    state = step++;
   }
   
 
