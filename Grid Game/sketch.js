@@ -16,7 +16,7 @@ let questionBlock;
 
 // levels
 let L1;
-let L2;
+// let L2;
 let L3;
 
 //player
@@ -25,7 +25,8 @@ let shellX = 19;
 let shellY = 10;
 
 //player sprite
-let spriteArray;
+let spriteArray = [];
+let t = 0;
 
 function preload() {
   wall = loadImage("blockO.png");
@@ -33,7 +34,7 @@ function preload() {
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
   L1 = loadJSON("level1.json");
-  L2 = loadJSON("level2.json");
+  // L2 = loadJSON("level2.json");
   L3 = loadJSON("level3.json");
 }
 
@@ -45,23 +46,24 @@ function setup() {
   grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
+  grid = L1;
 }
 
 function draw() {
-  // if (state === "start") {
-  //   startScreen()
-  // }
-  // if (state = "game") {
+  if (state === "start") {
+    startScreen()
+  }
+  if (state = "game") {
     background("lightblue");
     displayGrid(grid);
-  // }
+  }
 }
 
-// function startScreen() {
-//   fill("white");
-//   textSize(50);
-//   text("Press Space to Begin!", 480, 490);
-// }
+function startScreen() {
+  fill("white");
+  textSize(50);
+  text("Press Space to Begin!", 480, 490);
+}
 
 //level creator
 //will be replaced with level
@@ -88,9 +90,22 @@ function questionBlockArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
-
+//next level
+function next() {
+  
+}
 
 function keyPressed() {
+  if (key === "1") {
+    grid = L1;
+  }
+  // if (key === "2") {
+  //   grid = L2;
+  // }
+  if (key === "3") {
+    grid = L3;
+  }
+
   if (keyCode === RIGHT_ARROW) {
     for (let i = 0; i < 20; i++) {
       //if no brick move
@@ -101,9 +116,10 @@ function keyPressed() {
         shellX++;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        
       }
     }
+    animate();
   }
 
   if (keyCode === LEFT_ARROW) {
@@ -115,9 +131,10 @@ function keyPressed() {
         shellX--;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        
       }
     }
+    animate();
   }
 
   if (keyCode === UP_ARROW) {
@@ -130,9 +147,10 @@ function keyPressed() {
         shellY--;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        
       }
     }
+    animate();
   }
 
   if (keyCode === DOWN_ARROW) {
@@ -145,16 +163,20 @@ function keyPressed() {
         shellY++;
         //set new player location
         grid[shellY][shellX] = 9;
-        animate();
+        
       }
     }
+    animate();
   }
 }  
 
 function animate() {
-  for (let i=0; i<spriteArray.length+1; i++) {
-    blueShell = spriteArray[i-1];
-  }
+if (t === 6) {
+  t = 0;
+}
+
+blueShell = spriteArray[t];
+t++
 }
 
 //only used for level creation
@@ -199,7 +221,8 @@ function displayGrid(grid) {
 
 //start screen
 //space to start
-//space to restart
+//when complete next level
+//when complete last level
 //end screen
 //triggered by function that counts number of question blocks and returns 0
 //space to play again
