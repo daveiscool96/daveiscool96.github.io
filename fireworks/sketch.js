@@ -12,7 +12,7 @@ class Particle {
     this.dx = random(-5, 5);
     this.dy = random(-5, 5);
     this.diameter = 2;
-    this.color = color(random(255), random(255), random(255));
+    this.color = "red";
   }
 }
 
