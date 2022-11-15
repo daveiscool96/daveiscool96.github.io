@@ -2,7 +2,6 @@
 // David Hutcheson
 // Extra for Experts:  
 
-let state = "start";
 //structure
 const ROWS = 40;
 const COLS = 40;
@@ -16,9 +15,8 @@ let questionBlock;
 
 // levels
 let levels = [];
-let L1;
-let L2;
-let L3;
+let step = 0;
+let state = 0;
 let bg; 
 
 //player
@@ -28,7 +26,7 @@ let shellY = 10;
 
 //player sprite
 let spriteArray = [];
-let t = 0;
+
 
 function preload() {
   wall = loadImage("blockO.png");
@@ -44,7 +42,6 @@ function setup() {
   cellWidth = width/COLS;
   cellHeight = width/ROWS;
   grid = create2dArray(COLS, ROWS);
-  //grid = questionBlockArray(COLS, ROWS);
   //place player in grid
   grid[shellY][shellX] = 9; 
   //start level 1
@@ -53,18 +50,35 @@ function setup() {
 }
 
 function draw() {
-  if (state === "start") {
+  if (state === 0) {
     startScreen();
   }
-  if (state === "game") {
+  if (state === 1) {
     background("lightblue");
     displayGrid(grid);
+  }
+  if (state === 2) {
+    grid = levels[1];
+    shellX = 19;
+    shellY = 10;
+  }
+  if (state === 3) {
+    grid = levels[2];
+    shellX = 19;
+    shellY = 10;
+  }
+  if (state === 4) {
+    endScreen();
   }
 }
 
 function startScreen() {
-  
+  image(bg, 0, 0, windowWidth, windowHeight);
 }
+
+// function endScreen() {
+//   image(, 0, 0, windowWidth, windowHeight);
+// }
 
 //level creator
 //will be replaced with level
@@ -79,27 +93,20 @@ function create2dArray(COLS, ROWS) {
   return questionBlockArray;
 }
 
-// //fill bricks for level creation
-// function questionBlockArray(COLS, ROWS) {
-//   let questionBlockArray = [];
-//   for (let y=0; y<ROWS; y++) {
-//     questionBlockArray.push([]);
-//     for (let x=0; x<COLS; x++) {
-//       questionBlockArray[y].push(1);
-//     }
-//   }
-//   return questionBlockArray;
-// }
-
 //next level
-// function next(COLS, ROWS) {
-//   let next = [];
-//   for (let y=0; y<ROWS; y++) {
-//     for (let x=0; x<COLS; x++) {
-      
-//     }
-//   }
-// }
+function next(COLS, ROWS) {
+  for (let y=0; y<ROWS; y++) {
+    for (let x=0; x<COLS; x++) {
+      if (grid[y][x] === 0) {
+        state = step;
+      }
+      else {
+        step++;
+        state = step;
+      }
+    }
+  }
+}
 
 function keyPressed() {
   if (key === "1") {
@@ -115,8 +122,9 @@ function keyPressed() {
     shellX = 19;
     shellY = 10;
   }
-  if (state === "start" && key === " " || state === "end" && key === " " ) {
-    state = "game";
+  
+  if (state === 0 && key === " " || state === 4 && key === " " ) {
+    state = 1;
   }
   
 
