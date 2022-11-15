@@ -11,7 +11,7 @@ class Walker {
     this.y = y;
     this.color = "brown";
     this.speed = 5;
-    this. radius = 50;
+    this. radius = 25;
   }
 
   display() {
@@ -38,26 +38,26 @@ class Walker {
   }
 }
 
-let mike;
-let kate;
-let matt;
-
+let walkerArray = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  mike = new Walker(width/2, height/2);
-  kate = new Walker(width/2, height/2);
-  matt = new Walker(width/2, height/2);
+  spawnWalker();
 }
 
 function draw() {
-  kate.color = "blue";
-  matt.color = "white";
-  matt.display();
-  mike.display();
-  kate.display();
-  matt.move();
-  mike.move();
-  kate.move();
+  for (let i=0; i<walkerArray.length; i++) {
+    walkerArray[i].move();
+    walkerArray[i].display();
+  }
 }
 
+function spawnWalker() {
+  let mike = new Walker(random(0,width), random(0, height));
+  let someColor = color(random(255), random(255), random(255));
+  mike.color = someColor;
+  walkerArray.push(mike);
+}
 
+function keyPressed() {
+  spawnWalker();
+}
