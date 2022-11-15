@@ -15,9 +15,11 @@ let wall;
 let questionBlock;
 
 // levels
+let levels = [];
 let L1;
-// let L2;
+let L2;
 let L3;
+let marks;
 
 //player
 let blueShell;
@@ -33,9 +35,7 @@ function preload() {
   questionBlock = loadImage("questionBlock.webp");
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
-  L1 = loadJSON("level1.json");
-  // L2 = loadJSON("level2.json");
-  L3 = loadJSON("level3.json");
+  levels = [loadJSON("level1.json"), loadJSON("level2.json"), loadJSON("level3.json")];
 }
 
 function setup() {
@@ -47,6 +47,7 @@ function setup() {
   //place player in grid
   grid[shellY][shellX] = 9; 
   grid = L1;
+  next();
 }
 
 function draw() {
@@ -92,18 +93,32 @@ function questionBlockArray(COLS, ROWS) {
 
 //next level
 function next() {
-  
+  marks = 0;
+  for (let y=0; y<ROWS; y++) {
+    for (let x=0; x<COLS; x++) {
+      //count how many left
+      if (someArray[y][x] === 0) {
+        marks++
+      }
+    }
+  }
+  //next level
+  for (let z=0; z<2; z++){
+    if (marks === 0) {
+      grid = levels[z++]
+    }
+  }
 }
 
 function keyPressed() {
   if (key === "1") {
-    grid = L1;
+    grid = levels[0];
   }
-  // if (key === "2") {
-  //   grid = L2;
-  // }
+  if (key === "2") {
+    grid = levels[1];
+  }
   if (key === "3") {
-    grid = L3;
+    grid = levels[3];
   }
 
   if (keyCode === RIGHT_ARROW) {
