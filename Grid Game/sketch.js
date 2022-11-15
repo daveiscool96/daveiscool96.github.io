@@ -19,7 +19,7 @@ let levels = [];
 let L1;
 let L2;
 let L3;
-let marks;
+let bg; 
 
 //player
 let blueShell;
@@ -36,6 +36,7 @@ function preload() {
   spriteArray = [loadImage("tile000.png"), loadImage("tile001.png"), loadImage("tile002.png"), loadImage("tile003.png"), loadImage("tile004.png"), loadImage("tile005.png")];
   blueShell = loadImage("tile000.png");
   levels = [loadJSON("level1.json"), loadJSON("level2.json"), loadJSON("level3.json")];
+  bg = loadImage("StartScreen.png");
 }
 
 function setup() {
@@ -62,9 +63,7 @@ function draw() {
 }
 
 function startScreen() {
-  fill("white");
-  textSize(50);
-  text("Press Space to Begin!", 480, 490);
+  
 }
 
 //level creator
