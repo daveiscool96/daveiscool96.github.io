@@ -5,65 +5,51 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-class Walker {
+function preload() {
+  Bullet = loadImage("bulletBill.png");
+  gun = loadImage("GUN.png");
+}
+
+
+class Bullet {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.color = "red";
     this.speed = 5;
-    this.radius = 1;
+    this.height = 200;
+    this.width = this.height/62083333333;
   }
 
   display() {
-    stroke(this.color);
-    fill(this.color);
-    circle(this.x, this.y, this.radius*2);
+    gun();
+    Bullet();
   }
 
   move() {
-    let choice = random(100);
-
-    if (choice < 25) {
-      //up
-      this.y -= this.speed;
-    }
-    else if (choice < 50) {
-      //down
-      this.y += this.speed;
-    }
-    else if (choice < 75) {
-      //right
       this.x += this.speed;
-    }
-    else {
-      //left
-      this.x -= this.speed;
-    }
-
   }
-}
 
-let walkerArray = [];
+let bulletArray = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  spawnWalker();
+  spawnBullet();
 }
 
 function draw() {
-  for (let i = 0; i < walkerArray.length; i++) {
-    walkerArray[i].move();
-    walkerArray[i].display();
+  for (let i = 0; i < bulletArray.length; i++) {
+    bulletArray[i].move();
+    bulletArray[i].display();
   }
 }
 
-function spawnWalker() {
-  let michael = new Walker(random(width), random(height));
+function spawnBullet() {
+  let michael = new Bullet(random(width), random(height));
   let someColor = color(random(255), random(255), random(255));
   michael.color = someColor;
-  walkerArray.push(michael);
+  bulletArray.push(michael);
 }
 
 function keyPressed() {
-  spawnWalker();
+  spawnBullet();
 }
