@@ -6,50 +6,59 @@
 // - describe what you did to take this project "above and beyond"
 
 function preload() {
-  Bullet = loadImage("bulletBill.png");
-  gun = loadImage("GUN.png");
+  theImage = loadImage("bulletBill.png");
 }
 
 
 class Bullet {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.speed = 5;
+  constructor() {
+    this.x = 200;
+    this.y = 500;
+    this.dx = 5;
     this.height = 200;
     this.width = this.height/62083333333;
+    this.image = theImage;
   }
 
   display() {
-    gun();
-    Bullet();
+    image(this.image, this.x, this.y, this.width, this.height);
   }
 
   move() {
-      this.x += this.speed;
+    this.x += this.dx;
   }
 
+  isDead() {
+    return this.x >= width;
+  }
+}
+
 let bulletArray = [];
+let bullet;
+let theImage;
+
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  spawnBullet();
 }
 
 function draw() {
-  for (let i = 0; i < bulletArray.length; i++) {
-    bulletArray[i].move();
-    bulletArray[i].display();
+  background(220);
+  for (let someBullet of bulletArray){
+    bulletArray.move();
+    bulletArray.display();
+  }
+
+  for (let i=bulletArray.length-1; i >= 0; i--) {
+    if (bulletArray[i].isDead) {
+      bulletArray.splice(i,1);
+    }
   }
 }
 
-function spawnBullet() {
-  let michael = new Bullet(random(width), random(height));
-  let someColor = color(random(255), random(255), random(255));
-  michael.color = someColor;
-  bulletArray.push(michael);
-}
 
 function keyPressed() {
-  spawnBullet();
+  let someBullet = new Bullet();
+  bulletArray.push(someBullet);
 }
