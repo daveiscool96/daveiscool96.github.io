@@ -5,25 +5,21 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+// Button OOP
+
 class Button {
   constructor(x, y, width, height) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = "black";
-    this.hoverColor = "grey";
   }
 
   display() {
-    if (this.isInside(mouseX, mouseY)) {
-      fill(this.hoverColor);
-    }
-    else {
-      fill(this.color);
-    }
+    
     rect(this.x, this.y, this.width, this.height);
   }
+
   isInside(x, y) {
     let leftSide = this.x;
     let rightSide = this.x + this.width;
@@ -35,24 +31,24 @@ class Button {
   }
 }
 
-let buttonOne = new Button(200, 300, 150, 75);
-let buttonTwo = new Button(200, 600, 150, 75);
-let backgroundColor = "lightgreay";
+let buttonOne = new Button(200, 300, buttonWidth, buttonHeight);
+let buttonTwo = new Button(200, 600, buttonWidth, buttonHeight);
+let backgroundColor = "lightgrey";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(backgroundColor);
-  buttonOne;
+  buttonOne.display();
+  buttonTwo.display();
 }
 
 function mousePressed() {
   if (buttonOne.isInside(mouseX, mouseY)) {
-    backgroundColor = "red";
+    ;
   }
   if (buttonTwo.isInside(mouseX, mouseY)) {
-    backgroundColor = "blue";
+    ;
   }
 }
