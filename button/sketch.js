@@ -6,6 +6,13 @@
 // - describe what you did to take this project "above and beyond"
 
 // Button OOP
+let a;
+let b;
+
+function preload() {
+  a = loadImage("tile000.png");
+  b = loadImage("tile001.png");
+}
 
 class Button {
   constructor(x, y, width, height) {
@@ -46,9 +53,9 @@ function draw() {
 
 function mousePressed() {
   if (buttonOne.isInside(mouseX, mouseY)) {
-    ;
+    image(b, this.x, this.y, this. width, this.height);
   }
-  if (buttonTwo.isInside(mouseX, mouseY)) {
-    ;
-  }
+  // if (buttonTwo.isInside(mouseX, mouseY)) {
+  //   ;
+  // }
 }
